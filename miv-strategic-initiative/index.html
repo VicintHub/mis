@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Core Inline Styling (100% Flex & Grid Free) -->
+  <!-- Core Inline Styling (Responsive Grid & Flex layout) -->
   <style>
     :root {
       --navy: #0B2A4A;
@@ -60,62 +60,59 @@
     /* Container Constraints */
     .container {
       width: 100%;
-      max-width: 800px; /* Centered narrow column for optimal legibility */
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Navigation Header (Stacked Flow) */
+    /* Navigation Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       background-color: rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid rgba(11, 42, 74, 0.08);
-      padding: 1.5rem 0;
-      text-align: center;
+      padding: 1.25rem 0;
       transition: var(--transition);
     }
 
     .nav-container {
-      display: block;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .logo-link {
-      display: block;
-      margin: 0 auto 1.25rem auto;
-      width: fit-content;
+      display: flex;
+      align-items: center;
+      margin: 0;
     }
 
     .logo-img {
       height: 52px;
       width: auto;
       display: block;
-      margin: 0 auto;
       object-fit: contain;
     }
 
     .nav-menu {
-      display: block;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
       list-style: none;
-      text-align: center;
     }
 
     .nav-menu li {
-      display: inline-block;
-      margin: 0.5rem 1rem;
-      vertical-align: middle;
+      position: relative;
     }
 
     .nav-link {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--ink);
-      padding: 0.25rem 0;
+      padding: 0.5rem 0;
       position: relative;
+      display: block;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -137,6 +134,55 @@
       width: 100%;
     }
 
+    /* Programmes Dropdown Menu Styling */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background-color: var(--white);
+      border: 1px solid rgba(11, 42, 74, 0.08);
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 0.75rem 0;
+      list-style: none;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 1000;
+      text-align: left;
+    }
+    
+    .dropdown-menu li {
+      display: block !important;
+      margin: 0 !important;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: var(--transition);
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: var(--cream);
+      color: var(--gold);
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
     .nav-cta {
       display: inline-block;
       background-color: var(--navy);
@@ -149,7 +195,6 @@
       letter-spacing: 0.05em;
       border: 1px solid var(--navy);
       vertical-align: middle;
-      margin-left: 0.5rem;
     }
 
     .nav-cta:hover {
@@ -158,21 +203,125 @@
       transform: translateY(-2px);
     }
 
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.5rem;
+    }
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 26, 46, 0.4);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      z-index: 200;
+      padding: 2.5rem 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+    .mobile-menu.open {
+      right: 0;
+    }
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      float: right;
+      margin-bottom: 2rem;
+    }
+    .mobile-menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+    .mobile-nav-list {
+      list-style: none;
+      clear: both;
+      margin-top: 1rem;
+    }
+    .mobile-nav-list > li {
+      margin-bottom: 1.5rem;
+    }
+    .mobile-nav-link {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+    }
+    .mobile-nav-link:hover {
+      color: var(--gold);
+    }
+    .mobile-nav-section-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(11, 42, 74, 0.08);
+      padding-bottom: 0.25rem;
+    }
+    .mobile-submenu {
+      list-style: none;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+    .mobile-submenu li {
+      margin-bottom: 0.75rem;
+    }
+    .mobile-nav-sublink {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.85;
+      font-weight: 500;
+      display: block;
+    }
+    .mobile-nav-sublink:hover {
+      color: var(--gold);
+      opacity: 1;
+    }
+
     /* Hero Section */
     .hero {
       padding: 6rem 0;
       background: radial-gradient(circle at 50% 20%, rgba(247, 243, 234, 0.7) 0%, transparent 60%);
-      text-align: center;
     }
 
     .hero-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
 
     .hero-content {
       display: block;
-      margin-bottom: 3.5rem;
     }
 
     .hero-eyebrow {
@@ -207,14 +356,10 @@
       color: var(--ink);
       opacity: 0.85;
       margin-bottom: 2.5rem;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .hero-ctas {
       display: block;
-      text-align: center;
     }
 
     .btn {
@@ -226,7 +371,6 @@
       letter-spacing: 0.02em;
       transition: var(--transition);
       cursor: pointer;
-      margin: 0.5rem;
     }
 
     .btn-primary {
@@ -246,6 +390,7 @@
       background-color: transparent;
       color: var(--navy);
       border: 1px solid rgba(11, 42, 74, 0.25);
+      margin-left: 0.75rem;
     }
 
     .btn-secondary:hover {
@@ -256,8 +401,6 @@
 
     .hero-media {
       display: block;
-      max-width: 650px;
-      margin: 0 auto;
     }
 
     .hero-img-container {
@@ -280,22 +423,25 @@
       background-color: var(--navy-deep);
       color: var(--white);
       padding: 4rem 0;
-      text-align: center;
       border-y: 1px solid rgba(184, 134, 11, 0.2);
     }
 
     .trust-grid {
-      display: block;
-      text-align: center;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
     }
 
     .trust-item {
-      display: inline-block;
-      width: 44%;
-      min-width: 240px;
-      margin: 1.5rem 2%;
-      vertical-align: top;
+      display: block;
+      width: 22%;
+      min-width: 200px;
       text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .trust-item:last-child {
+      border-right: none;
     }
 
     .trust-number {
@@ -320,12 +466,13 @@
     .teaser-section {
       padding: 6rem 0;
       background-color: var(--cream);
-      text-align: center;
     }
 
     .teaser-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1fr 1.2fr;
+      gap: 4.5rem;
+      align-items: center;
     }
 
     .section-eyebrow {
@@ -350,7 +497,7 @@
       width: 48px;
       height: 3px;
       background-color: var(--gold);
-      margin: 0 auto 2rem auto;
+      margin-bottom: 2rem;
     }
 
     .teaser-text {
@@ -358,9 +505,6 @@
       color: var(--ink);
       opacity: 0.85;
       margin-bottom: 2.5rem;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .teaser-text p {
@@ -369,8 +513,6 @@
 
     .teaser-media {
       display: block;
-      max-width: 600px;
-      margin: 0 auto 2.5rem auto;
       border-radius: 8px;
       overflow: hidden;
       aspect-ratio: 1.5;
@@ -388,7 +530,6 @@
     .compass-section {
       padding: 6rem 0;
       background-color: var(--white);
-      text-align: center;
     }
 
     .section-header-center {
@@ -397,16 +538,22 @@
       margin: 0 auto 4rem auto;
     }
 
+    .section-header-center .divider {
+      margin: 1.5rem auto;
+    }
+
     .compass-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
 
     .compass-graphic-container {
       display: block;
-      margin: 0 auto 3rem auto;
       width: 100%;
       max-width: 380px;
+      margin: 0 auto;
     }
 
     .compass-svg-wrapper {
@@ -469,8 +616,6 @@
     /* Convergence Info Box */
     .compass-card-container {
       display: block;
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .compass-card {
@@ -479,12 +624,13 @@
       border-radius: 12px;
       padding: 2.5rem;
       box-shadow: 0 10px 30px rgba(7, 26, 46, 0.03);
-      text-align: center;
       transition: var(--transition);
     }
 
     .compass-card-header {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
@@ -494,22 +640,20 @@
       border-radius: 50%;
       background-color: var(--cream);
       color: var(--navy);
-      display: block;
-      margin: 0 auto 1rem auto;
-      text-align: center;
-      line-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .compass-card-icon svg {
       width: 22px;
       height: 22px;
-      vertical-align: middle;
     }
 
     .compass-card-title {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-top: 0.5rem;
     }
 
     .compass-card-tag {
@@ -519,8 +663,8 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--crimson);
-      margin-bottom: 0.5rem;
       display: block;
+      margin-bottom: 0.25rem;
     }
 
     .compass-card-body {
@@ -549,13 +693,12 @@
     .programmes-section {
       padding: 6rem 0;
       background-color: var(--cream);
-      text-align: center;
     }
 
     .cards-grid {
-      display: block;
-      max-width: 600px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 2.5rem;
     }
 
     .card {
@@ -565,8 +708,6 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
       border: 1px solid rgba(7, 26, 46, 0.05);
       display: block;
-      margin-bottom: 3.5rem;
-      text-align: center;
       transition: var(--transition);
     }
 
@@ -592,7 +733,6 @@
     .card-content {
       padding: 2.5rem;
       display: block;
-      text-align: center;
     }
 
     .card-tag {
@@ -640,32 +780,31 @@
     .impact-section {
       padding: 6rem 0;
       background-color: var(--white);
-      text-align: center;
     }
 
     .impact-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1.1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
     }
 
     .impact-content {
       display: block;
-      margin-bottom: 3.5rem;
     }
 
     .impact-indicators {
       display: block;
-      max-width: 550px;
-      margin: 0 auto;
     }
 
     .indicator-item {
-      display: block;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
       padding: 1.5rem;
       border-radius: 8px;
       border: 1px solid var(--cream);
       background-color: rgba(247, 243, 234, 0.2);
-      text-align: center;
       margin-bottom: 1.5rem;
       transition: var(--transition);
     }
@@ -678,8 +817,8 @@
 
     .indicator-icon {
       color: var(--gold);
-      display: block;
-      margin: 0 auto 0.75rem auto;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
     }
 
     .indicator-icon svg {
@@ -760,26 +899,25 @@
       color: var(--white);
       padding: 5rem 0 3rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      text-align: center;
     }
 
     .footer-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1.2fr repeat(3, 0.8fr);
+      gap: 4rem;
     }
 
     .footer-brand {
-      display: block;
-      margin: 0 auto 3.5rem auto;
-      max-width: 450px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
     .footer-logo-img {
       height: 52px;
       width: auto;
       display: block;
-      margin: 0 auto 1.5rem auto;
+      margin-bottom: 1.5rem;
     }
 
     .footer-brand-text {
@@ -787,12 +925,13 @@
       color: var(--cream);
       opacity: 0.7;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      max-width: 320px;
     }
 
     .footer-socials {
-      display: block;
-      text-align: center;
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
 
     .social-btn-footer {
@@ -804,7 +943,6 @@
       background-color: rgba(255, 255, 255, 0.05);
       color: var(--cream);
       text-align: center;
-      margin: 0 0.5rem;
       transition: var(--transition);
       vertical-align: middle;
     }
@@ -823,9 +961,6 @@
 
     .footer-col {
       display: block;
-      margin: 0 auto 3rem auto;
-      max-width: 320px;
-      text-align: center;
     }
 
     .footer-col-title {
@@ -866,7 +1001,8 @@
     }
 
     .footer-coordinate-item {
-      display: block;
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1.25rem;
       font-size: 0.85rem;
       color: var(--cream);
@@ -877,8 +1013,8 @@
       width: 16px;
       height: 16px;
       color: var(--gold);
-      margin-right: 0.5rem;
-      vertical-align: middle;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
     }
 
     .footer-coordinate-item span, .footer-coordinate-item a {
@@ -889,11 +1025,120 @@
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 2rem;
       margin-top: 3rem;
-      display: block;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 0.75rem;
       color: var(--cream);
       opacity: 0.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-cols: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+      .hero-ctas {
+        text-align: center;
+      }
+      .btn-secondary {
+        margin-left: 0.5rem;
+      }
+      .hero-media {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .teaser-grid {
+        grid-template-cols: 1fr;
+        text-align: center;
+      }
+      .teaser-media {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto 3rem auto;
+      }
+      .divider {
+        margin: 0 auto 2rem auto;
+      }
+      .compass-grid {
+        grid-template-cols: 1fr;
+        text-align: center;
+      }
+      .compass-graphic-container {
+        margin-bottom: 3rem;
+      }
+      .compass-card {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .cards-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .impact-grid {
+        grid-template-cols: 1fr;
+        text-align: center;
+      }
+      .impact-indicators {
+        margin: 3rem auto 0 auto;
+        max-width: 500px;
+      }
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .logo-img {
+        height: 46px;
+      }
+      .hero-title {
+        font-size: 2.25rem;
+      }
+      .trust-item {
+        width: 45%;
+        border-right: none;
+        margin-bottom: 1.5rem;
+      }
+      .trust-item:nth-child(even) {
+        border-left: none;
+      }
+      .cards-grid {
+        grid-template-cols: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2.5rem;
+      }
+      .footer-brand, .footer-col {
+        text-align: center;
+        align-items: center;
+      }
+      .footer-logo-img {
+        margin: 0 auto 1.5rem auto;
+      }
+      .footer-socials {
+        justify-content: center;
+      }
+      .footer-coordinate-item {
+        justify-content: center;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -909,14 +1154,57 @@
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="programmes.html" class="nav-link">Programmes</a></li>
+        <li class="dropdown">
+          <a href="programmes.html" class="nav-link">Programmes <span style="font-size: 0.75rem; vertical-align: middle; margin-left: 0.2rem;">▼</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="academic-summit.html">Academic Summit</a></li>
+            <li><a href="business-summit.html">Business Summit</a></li>
+            <li><a href="armed-forces-outreach.html">Armed Forces Outreach</a></li>
+            <li><a href="royal-fathers-conference.html">Royal Fathers' Conference</a></li>
+          </ul>
+        </li>
         <li><a href="impact.html" class="nav-link">Impact</a></li>
         <li><a href="partner.html" class="nav-link">Partner</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
         <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
       </ul>
+
+      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Sidebar Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li>
+        <span class="mobile-nav-section-title">Programmes</span>
+        <ul class="mobile-submenu">
+          <li><a href="programmes.html" class="mobile-nav-sublink">All Programmes Hub</a></li>
+          <li><a href="academic-summit.html" class="mobile-nav-sublink">Academic Summit</a></li>
+          <li><a href="business-summit.html" class="mobile-nav-sublink">Business Summit</a></li>
+          <li><a href="armed-forces-outreach.html" class="mobile-nav-sublink">Armed Forces Outreach</a></li>
+          <li><a href="royal-fathers-conference.html" class="mobile-nav-sublink">Royal Fathers' Conference</a></li>
+        </ul>
+      </li>
+      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
+      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -974,7 +1262,7 @@
           <p>For over three decades, Men of Issachar Vision Inc. has raised leaders across Nigeria and beyond. MIV Strategic Initiative is its dedicated expression for reaching the specific sectors that shape national life — academia, security, business, and traditional governance.</p>
           <p>We don't wait for institutions to come to us. We go to where their leaders already meet, bringing real value first: leadership insight, funding access, dialogue, and welfare support.</p>
         </div>
-        <a href="about.html" class="btn btn-secondary">Read Our Story →</a>
+        <a href="about.html" class="btn btn-secondary" style="margin: 0;">Read Our Story →</a>
       </div>
     </div>
   </section>
@@ -1170,7 +1458,7 @@
     <div class="container cta-banner-content">
       <h2 class="cta-banner-title">National transformation is not one institution's work.</h2>
       <p class="cta-banner-text">It requires universities willing to open their halls, agencies willing to open their gates, businesses willing to open their networks, and partners willing to open their hands.</p>
-      <a href="partner.html" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Become a Strategic Partner</a>
+      <a href="partner.html" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold); margin: 0;">Become a Strategic Partner</a>
     </div>
   </section>
 
@@ -1255,6 +1543,28 @@
 
   <!-- Core Javascript -->
   <script>
+    // Mobile Navigation Toggle
+    const menuOpenBtn = document.getElementById('menu-open-btn');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    menuOpenBtn.addEventListener('click', openMobileMenu);
+    menuCloseBtn.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+
     // Interactive SVG Compass Data & Events
     const sectors = {
       academic: {
@@ -1262,7 +1572,7 @@
         tag: "Lecturers & Institutional Leaders",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-               </svg>`,
+                </svg>`,
         description: "Equipping lecturers and administrators across tertiary institutions to restore moral gatekeeping and build long-term educational legacy.",
         link: "academic-summit.html"
       },
@@ -1271,7 +1581,7 @@
         tag: "Entrepreneurs & Business Leaders",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-               </svg>`,
+                </svg>`,
         description: "Equipping values-driven entrepreneurs with mentorship, networks, and a ₦1,000,000 Pitch Competition to generate national productivity.",
         link: "business-summit.html"
       },
@@ -1280,7 +1590,7 @@
         tag: "Armed Forces & Security Agencies",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-               </svg>`,
+                </svg>`,
         description: "Honouring and strengthening officers across security agencies, and providing practical vocational empowerment for widows of fallen heroes.",
         link: "armed-forces-outreach.html"
       },
@@ -1289,7 +1599,7 @@
         tag: "Traditional Rulers & Royal Fathers",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-               </svg>`,
+                </svg>`,
         description: "Convening traditional rulers in humility and worship to seek divine wisdom for community peace and grassroots transformation.",
         link: "royal-fathers-conference.html"
       }

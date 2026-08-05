@@ -56,62 +56,59 @@
 
     .container {
       width: 100%;
-      max-width: 800px; /* Constrained column layout */
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Navigation Header (Stacked Flow) */
+    /* Navigation Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       background-color: rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid rgba(11, 42, 74, 0.08);
-      padding: 1.5rem 0;
-      text-align: center;
+      padding: 1.25rem 0;
       transition: var(--transition);
     }
 
     .nav-container {
-      display: block;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .logo-link {
-      display: block;
-      margin: 0 auto 1.25rem auto;
-      width: fit-content;
+      display: flex;
+      align-items: center;
+      margin: 0;
     }
 
     .logo-img {
       height: 52px;
       width: auto;
       display: block;
-      margin: 0 auto;
       object-fit: contain;
     }
 
     .nav-menu {
-      display: block;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
       list-style: none;
-      text-align: center;
     }
 
     .nav-menu li {
-      display: inline-block;
-      margin: 0.5rem 1rem;
-      vertical-align: middle;
+      position: relative;
     }
 
     .nav-link {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--ink);
-      padding: 0.25rem 0;
+      padding: 0.5rem 0;
       position: relative;
+      display: block;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -133,6 +130,55 @@
       width: 100%;
     }
 
+    /* Programmes Dropdown Menu Styling */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background-color: var(--white);
+      border: 1px solid rgba(11, 42, 74, 0.08);
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 0.75rem 0;
+      list-style: none;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 1000;
+      text-align: left;
+    }
+    
+    .dropdown-menu li {
+      display: block !important;
+      margin: 0 !important;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: var(--transition);
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: var(--cream);
+      color: var(--gold);
+    }
+    
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
     .nav-cta {
       display: inline-block;
       background-color: var(--navy);
@@ -145,13 +191,116 @@
       letter-spacing: 0.05em;
       border: 1px solid var(--navy);
       vertical-align: middle;
-      margin-left: 0.5rem;
     }
 
     .nav-cta:hover {
       background-color: var(--gold);
       border-color: var(--gold);
       transform: translateY(-2px);
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.5rem;
+    }
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 26, 46, 0.4);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      z-index: 200;
+      padding: 2.5rem 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+    .mobile-menu.open {
+      right: 0;
+    }
+    .mobile-menu-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      float: right;
+      margin-bottom: 2rem;
+    }
+    .mobile-menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+    .mobile-nav-list {
+      list-style: none;
+      clear: both;
+      margin-top: 1rem;
+    }
+    .mobile-nav-list > li {
+      margin-bottom: 1.5rem;
+    }
+    .mobile-nav-link {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+    }
+    .mobile-nav-link:hover {
+      color: var(--gold);
+    }
+    .mobile-nav-section-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(11, 42, 74, 0.08);
+      padding-bottom: 0.25rem;
+    }
+    .mobile-submenu {
+      list-style: none;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+    .mobile-submenu li {
+      margin-bottom: 0.75rem;
+    }
+    .mobile-nav-sublink {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.85;
+      font-weight: 500;
+      display: block;
+    }
+    .mobile-nav-sublink:hover {
+      color: var(--gold);
+      opacity: 1;
     }
 
     /* Page Hero */
@@ -190,28 +339,34 @@
     .programmes-deck {
       padding: 6rem 0;
       background-color: var(--white);
-      text-align: center;
     }
 
     .deck-grid {
-      display: block;
-      max-width: 600px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 3.5rem;
     }
 
-    .programme-card-row, .programme-card-row.reverse {
-      display: block;
-      margin-bottom: 5rem;
-      text-align: center;
+    .programme-card-row {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(7, 26, 46, 0.03);
+      border: 1px solid var(--cream);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .programme-card-row:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+      border-color: rgba(184, 134, 11, 0.15);
     }
 
     .programme-card-media {
-      border-radius: 12px;
       overflow: hidden;
-      aspect-ratio: 1.5;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-      border: 1px solid var(--cream);
-      margin-bottom: 2rem;
+      aspect-ratio: 1.6;
       display: block;
     }
 
@@ -222,7 +377,11 @@
     }
 
     .programme-card-content {
-      display: block;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
     }
 
     .programme-card-tag {
@@ -237,17 +396,18 @@
     }
 
     .programme-card-title {
-      font-size: 1.85rem;
+      font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--navy);
     }
 
     .programme-card-text {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--ink);
       opacity: 0.85;
       margin-bottom: 2rem;
+      line-height: 1.6;
     }
 
     .btn {
@@ -259,6 +419,7 @@
       letter-spacing: 0.02em;
       transition: var(--transition);
       cursor: pointer;
+      text-align: center;
     }
 
     .btn-primary {
@@ -279,7 +440,6 @@
       padding: 6rem 0;
       background-color: var(--cream);
       border-y: 1px solid rgba(11, 42, 74, 0.08);
-      text-align: center;
     }
 
     .section-header-center {
@@ -296,15 +456,17 @@
     }
 
     .compass-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
 
     .compass-graphic-container {
       display: block;
-      margin: 0 auto 3rem auto;
       width: 100%;
       max-width: 380px;
+      margin: 0 auto;
     }
 
     .compass-svg-wrapper {
@@ -367,8 +529,6 @@
     /* Convergence Info Box */
     .compass-card-container {
       display: block;
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .compass-card {
@@ -377,13 +537,15 @@
       border-radius: 12px;
       padding: 2.5rem;
       box-shadow: 0 10px 30px rgba(7, 26, 46, 0.03);
-      text-align: center;
       transition: var(--transition);
     }
 
     .compass-card-header {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
       margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     .compass-card-icon {
@@ -392,22 +554,20 @@
       border-radius: 50%;
       background-color: var(--cream);
       color: var(--navy);
-      display: block;
-      margin: 0 auto 1rem auto;
-      text-align: center;
-      line-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .compass-card-icon svg {
       width: 22px;
       height: 22px;
-      vertical-align: middle;
     }
 
     .compass-card-title {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-top: 0.5rem;
     }
 
     .compass-card-tag {
@@ -417,8 +577,8 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--crimson);
-      margin-bottom: 0.5rem;
       display: block;
+      margin-bottom: 0.25rem;
     }
 
     .compass-card-body {
@@ -427,6 +587,7 @@
       opacity: 0.85;
       margin-bottom: 2rem;
       min-height: 70px;
+      text-align: left;
     }
 
     .compass-card-cta {
@@ -468,7 +629,6 @@
 
     .banner-ctas {
       display: block;
-      text-align: center;
     }
 
     .banner-ctas .btn {
@@ -493,26 +653,25 @@
       color: var(--white);
       padding: 5rem 0 3rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      text-align: center;
     }
 
     .footer-grid {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-cols: 1.2fr repeat(3, 0.8fr);
+      gap: 4rem;
     }
 
     .footer-brand {
-      display: block;
-      margin: 0 auto 3.5rem auto;
-      max-width: 450px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
     .footer-logo-img {
       height: 52px;
       width: auto;
       display: block;
-      margin: 0 auto 1.5rem auto;
+      margin-bottom: 1.5rem;
     }
 
     .footer-brand-text {
@@ -520,12 +679,13 @@
       color: var(--cream);
       opacity: 0.7;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      max-width: 320px;
     }
 
     .footer-socials {
-      display: block;
-      text-align: center;
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
 
     .social-btn-footer {
@@ -537,7 +697,6 @@
       background-color: rgba(255, 255, 255, 0.05);
       color: var(--cream);
       text-align: center;
-      margin: 0 0.5rem;
       transition: var(--transition);
       vertical-align: middle;
     }
@@ -556,9 +715,6 @@
 
     .footer-col {
       display: block;
-      margin: 0 auto 3rem auto;
-      max-width: 320px;
-      text-align: center;
     }
 
     .footer-col-title {
@@ -599,7 +755,8 @@
     }
 
     .footer-coordinate-item {
-      display: block;
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1.25rem;
       font-size: 0.85rem;
       color: var(--cream);
@@ -610,8 +767,8 @@
       width: 16px;
       height: 16px;
       color: var(--gold);
-      margin-right: 0.5rem;
-      vertical-align: middle;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
     }
 
     .footer-coordinate-item span, .footer-coordinate-item a {
@@ -622,11 +779,74 @@
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 2rem;
       margin-top: 3rem;
-      display: block;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 0.75rem;
       color: var(--cream);
       opacity: 0.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .deck-grid {
+        grid-template-cols: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+      .compass-grid {
+        grid-template-cols: 1fr;
+        text-align: center;
+      }
+      .compass-graphic-container {
+        margin-bottom: 3rem;
+      }
+      .compass-card {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .logo-img {
+        height: 46px;
+      }
+      .page-hero-title {
+        font-size: 2.25rem;
+      }
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2.5rem;
+      }
+      .footer-brand, .footer-col {
+        text-align: center;
+        align-items: center;
+      }
+      .footer-logo-img {
+        margin: 0 auto 1.5rem auto;
+      }
+      .footer-socials {
+        justify-content: center;
+      }
+      .footer-coordinate-item {
+        justify-content: center;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -642,14 +862,57 @@
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="programmes.html" class="nav-link active">Programmes</a></li>
+        <li class="dropdown">
+          <a href="programmes.html" class="nav-link active">Programmes <span style="font-size: 0.75rem; vertical-align: middle; margin-left: 0.2rem;">▼</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="academic-summit.html">Academic Summit</a></li>
+            <li><a href="business-summit.html">Business Summit</a></li>
+            <li><a href="armed-forces-outreach.html">Armed Forces Outreach</a></li>
+            <li><a href="royal-fathers-conference.html">Royal Fathers' Conference</a></li>
+          </ul>
+        </li>
         <li><a href="impact.html" class="nav-link">Impact</a></li>
         <li><a href="partner.html" class="nav-link">Partner</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
         <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
       </ul>
+
+      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Sidebar Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li>
+        <span class="mobile-nav-section-title">Programmes</span>
+        <ul class="mobile-submenu">
+          <li><a href="programmes.html" class="mobile-nav-sublink">All Programmes Hub</a></li>
+          <li><a href="academic-summit.html" class="mobile-nav-sublink">Academic Summit</a></li>
+          <li><a href="business-summit.html" class="mobile-nav-sublink">Business Summit</a></li>
+          <li><a href="armed-forces-outreach.html" class="mobile-nav-sublink">Armed Forces Outreach</a></li>
+          <li><a href="royal-fathers-conference.html" class="mobile-nav-sublink">Royal Fathers' Conference</a></li>
+        </ul>
+      </li>
+      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
+      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -670,9 +933,11 @@
           <img src="images/royalfather.png" alt="Royal Fathers' Conference" class="programme-card-img">
         </div>
         <div class="programme-card-content">
-          <span class="programme-card-tag">Traditional & Royal Leadership</span>
-          <h2 class="programme-card-title">Royal Fathers' (Oba's) Conference</h2>
-          <p class="programme-card-text">Traditional rulers set aside titles, regalia, and protocol to worship, fellowship, and pray for wisdom to lead their communities with integrity and compassion.</p>
+          <div>
+            <span class="programme-card-tag">Traditional & Royal Leadership</span>
+            <h2 class="programme-card-title">Royal Fathers' (Oba's) Conference</h2>
+            <p class="programme-card-text">Traditional rulers set aside titles, regalia, and protocol to worship, fellowship, and pray for wisdom to lead their communities with integrity and compassion.</p>
+          </div>
           <a href="royal-fathers-conference.html" class="btn btn-primary">Learn More & Explore</a>
         </div>
       </div>
@@ -683,9 +948,11 @@
           <img src="images/armedforce.png" alt="Armed Forces Outreach" class="programme-card-img">
         </div>
         <div class="programme-card-content">
-          <span class="programme-card-tag">Security & Uniformed Officers</span>
-          <h2 class="programme-card-title">Armed Forces & Uniformed Officers Outreach</h2>
-          <p class="programme-card-text">Outreach and capacity development honouring senior officers of uniformed services, accompanied by vocational empowerment projects supporting widows of fallen heroes.</p>
+          <div>
+            <span class="programme-card-tag">Security & Uniformed Officers</span>
+            <h2 class="programme-card-title">Armed Forces & Uniformed Officers Outreach</h2>
+            <p class="programme-card-text">Outreach and capacity development honouring senior officers of uniformed services, accompanied by vocational empowerment projects supporting widows of fallen heroes.</p>
+          </div>
           <a href="armed-forces-outreach.html" class="btn btn-primary">Learn More & Explore</a>
         </div>
       </div>
@@ -696,9 +963,11 @@
           <img src="images/academicsummit.png" alt="Academic Summit" class="programme-card-img">
         </div>
         <div class="programme-card-content">
-          <span class="programme-card-tag">Academic Transformation</span>
-          <h2 class="programme-card-title">Academic Summit & Banquet</h2>
-          <p class="programme-card-text">A purpose-driven and policy-free summit convening tertiary institution lecturers, professors, and administrators to focus on ethical gatekeeping and educational legacy.</p>
+          <div>
+            <span class="programme-card-tag">Academic Transformation</span>
+            <h2 class="programme-card-title">Academic Summit & Banquet</h2>
+            <p class="programme-card-text">A purpose-driven and policy-free summit convening tertiary institution lecturers, professors, and administrators to focus on ethical gatekeeping and educational legacy.</p>
+          </div>
           <a href="academic-summit.html" class="btn btn-primary">Learn More & Explore</a>
         </div>
       </div>
@@ -709,9 +978,11 @@
           <img src="images/business-hero.jpg" alt="MIV Business Summit" class="programme-card-img">
         </div>
         <div class="programme-card-content">
-          <span class="programme-card-tag">Business & Economic Development</span>
-          <h2 class="programme-card-title">MIV Business Summit</h2>
-          <p class="programme-card-text">Activating Kingdom-minded wealth creators. Providing mentorship, commercial exhibitions, and up to ₦1,000,000 in Pitch Competition seed funding.</p>
+          <div>
+            <span class="programme-card-tag">Business & Economic Development</span>
+            <h2 class="programme-card-title">MIV Business Summit</h2>
+            <p class="programme-card-text">Activating Kingdom-minded wealth creators. Providing mentorship, commercial exhibitions, and up to ₦1,000,000 in Pitch Competition seed funding.</p>
+          </div>
           <a href="business-summit.html" class="btn btn-primary">Learn More & Explore</a>
         </div>
       </div>
@@ -785,8 +1056,8 @@
       <h2 class="nominations-title">Know a leader who should be in the room next time?</h2>
       <p class="nominations-text">Whether you want to nominate an academic administrator, sponsor a widow's vocational training, or explore royal alliances, your partnership is key.</p>
       <div class="banner-ctas">
-        <a href="contact.html?interest=Nominating+a+Participant" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Nominate a Participant</a>
-        <a href="partner.html" class="btn btn-secondary-light">Partner With a Programme</a>
+        <a href="contact.html?interest=Nominating+a+Participant" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold); margin: 0;">Nominate a Participant</a>
+        <a href="partner.html" class="btn btn-secondary-light" style="margin-left: 0.75rem;">Partner With a Programme</a>
       </div>
     </div>
   </section>
@@ -867,6 +1138,28 @@
 
   <!-- Javascript -->
   <script>
+    // Mobile Navigation Toggle
+    const menuOpenBtn = document.getElementById('menu-open-btn');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    menuOpenBtn.addEventListener('click', openMobileMenu);
+    menuCloseBtn.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+
     // Compass
     const sectors = {
       academic: {
@@ -874,7 +1167,7 @@
         tag: "Lecturers & Institutional Leaders",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-               </svg>`,
+                </svg>`,
         description: "Equipping lecturers and administrators across tertiary institutions to restore moral gatekeeping and build long-term educational legacy.",
         link: "academic-summit.html"
       },
@@ -883,7 +1176,7 @@
         tag: "Entrepreneurs & Business Leaders",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-               </svg>`,
+                </svg>`,
         description: "Equipping values-driven entrepreneurs with mentorship, networks, and a ₦1,000,000 Pitch Competition to generate national productivity.",
         link: "business-summit.html"
       },
@@ -892,7 +1185,7 @@
         tag: "Armed Forces & Security Agencies",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-               </svg>`,
+                </svg>`,
         description: "Honouring and strengthening officers across security agencies, and providing practical vocational empowerment for widows of fallen heroes.",
         link: "armed-forces-outreach.html"
       },
@@ -901,7 +1194,7 @@
         tag: "Traditional Rulers & Royal Fathers",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-               </svg>`,
+                </svg>`,
         description: "Convening traditional rulers in humility and worship to seek divine wisdom for community peace and grassroots transformation.",
         link: "royal-fathers-conference.html"
       }
