@@ -24,7 +24,7 @@
       --font-title: 'Outfit', -apple-system, sans-serif;
       --font-body: 'Inter', -apple-system, sans-serif;
       --font-mono: 'Fira Code', monospace;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.25s ease-in-out;
     }
 
     * {
@@ -37,7 +37,7 @@
       font-family: var(--font-body);
       color: var(--ink);
       background-color: var(--white);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
@@ -56,55 +56,61 @@
 
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 800px; /* Constrained column layout */
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Navigation Header */
+    /* Navigation Header (Stacked Flow) */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid rgba(11, 42, 74, 0.08);
-      height: 80px;
-      display: flex;
-      align-items: center;
+      padding: 1.5rem 0;
+      text-align: center;
+      transition: var(--transition);
     }
 
     .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
+      display: block;
+      text-align: center;
     }
 
     .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      display: block;
+      margin: 0 auto 1.25rem auto;
+      width: fit-content;
     }
 
     .logo-img {
       height: 52px;
       width: auto;
       display: block;
+      margin: 0 auto;
+      object-fit: contain;
     }
 
     .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 2.25rem;
+      display: block;
+      margin: 0;
+      padding: 0;
       list-style: none;
+      text-align: center;
+    }
+
+    .nav-menu li {
+      display: inline-block;
+      margin: 0.5rem 1rem;
+      vertical-align: middle;
     }
 
     .nav-link {
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--ink);
-      padding: 0.5rem 0;
+      padding: 0.25rem 0;
       position: relative;
     }
 
@@ -128,108 +134,24 @@
     }
 
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
       background-color: var(--navy);
       color: var(--white) !important;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.25rem;
       border-radius: 4px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       border: 1px solid var(--navy);
+      vertical-align: middle;
+      margin-left: 0.5rem;
     }
 
     .nav-cta:hover {
       background-color: var(--gold);
       border-color: var(--gold);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.15);
-    }
-
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--navy);
-      padding: 0.5rem;
-    }
-
-    .menu-toggle svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    /* Mobile Sidebar Menu */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 300px;
-      height: 100vh;
-      background-color: var(--white);
-      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-      z-index: 200;
-      padding: 2.5rem 2rem;
-      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .mobile-menu.open {
-      right: 0;
-    }
-
-    .mobile-menu-close {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--navy);
-      padding: 0.25rem;
-    }
-
-    .mobile-menu-close svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .mobile-nav-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .mobile-nav-link {
-      font-family: var(--font-title);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--navy);
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--gold);
-    }
-
-    .mobile-menu-overlay {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(7, 26, 46, 0.4);
-      z-index: 150;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .mobile-menu-overlay.show {
-      opacity: 1;
-      pointer-events: auto;
     }
 
     /* Page Hero */
@@ -237,7 +159,7 @@
       background-color: var(--navy);
       color: var(--white);
       padding: 5rem 0;
-      text-align: left;
+      text-align: center;
     }
 
     .page-hero-eyebrow {
@@ -252,17 +174,15 @@
     }
 
     .page-hero-title {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       color: var(--white);
       margin-bottom: 1.25rem;
-      max-width: 800px;
     }
 
     .page-hero-description {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--cream);
       opacity: 0.85;
-      max-width: 700px;
       line-height: 1.6;
     }
 
@@ -270,24 +190,28 @@
     .fact-strip {
       background-color: var(--cream);
       color: var(--navy);
-      padding: 2.5rem 0;
+      padding: 3rem 0;
       border-bottom: 1px solid rgba(11, 42, 74, 0.08);
-    }
-
-    .fact-grid {
-      display: grid;
-      grid-template-cols: repeat(4, 1fr);
-      gap: 2rem;
       text-align: center;
     }
 
-    .fact-item:not(:last-child) {
-      border-right: 1px solid rgba(11, 42, 74, 0.1);
+    .fact-grid {
+      display: block;
+      text-align: center;
+    }
+
+    .fact-item {
+      display: inline-block;
+      width: 44%;
+      min-width: 240px;
+      margin: 1.5rem 2%;
+      vertical-align: top;
+      text-align: center;
     }
 
     .fact-number {
       font-family: var(--font-title);
-      font-size: 2.25rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 0.25rem;
@@ -295,29 +219,29 @@
 
     .fact-label {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.75rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--ink);
-      opacity: 0.65;
+      opacity: 0.8;
     }
 
     /* Core Content Block */
     .content-section {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background-color: var(--white);
+      text-align: center;
     }
 
     .content-grid {
-      display: grid;
-      grid-template-cols: 1.2fr 1fr;
-      gap: 4.5rem;
-      align-items: center;
+      display: block;
+      text-align: center;
     }
 
     .content-left {
-      text-align: left;
+      display: block;
+      margin-bottom: 3.5rem;
     }
 
     .section-eyebrow {
@@ -334,7 +258,7 @@
     .section-title {
       font-size: 2.25rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       color: var(--navy);
     }
 
@@ -342,22 +266,28 @@
       width: 48px;
       height: 3px;
       background-color: var(--gold);
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem auto;
     }
 
     .content-text {
       font-size: 1rem;
       color: var(--ink);
       opacity: 0.85;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .content-text p {
+      margin-bottom: 1.25rem;
     }
 
     .content-media {
-      border-radius: 12px;
+      display: block;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
       overflow: hidden;
-      aspect-ratio: 1.4;
+      aspect-ratio: 1.5;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
       border: 1px solid var(--cream);
     }
@@ -370,30 +300,34 @@
 
     /* Attendees & Speakers Grid */
     .attendees-speakers {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background-color: var(--cream);
       border-y: 1px solid rgba(11, 42, 74, 0.08);
+      text-align: center;
     }
 
     .columns-grid {
-      display: grid;
-      grid-template-cols: 1fr 1fr;
-      gap: 4.5rem;
+      display: block;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .column-box {
-      text-align: left;
+      display: block;
+      margin-bottom: 4rem;
+      text-align: center;
     }
 
     .column-title-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: block;
       margin-bottom: 2rem;
+      text-align: center;
     }
 
     .column-icon {
       color: var(--azure);
+      display: block;
+      margin: 0 auto 0.75rem auto;
     }
 
     .column-icon.gold {
@@ -406,48 +340,64 @@
     }
 
     .column-heading {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy);
     }
 
     .attendees-list {
-      display: grid;
-      grid-template-cols: repeat(2, 1fr);
-      gap: 1rem;
+      display: block;
       list-style: none;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--ink);
+      padding: 0;
+      margin: 0;
+      text-align: center;
     }
 
     .attendee-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-block;
+      width: 45%;
+      min-width: 220px;
       background-color: var(--white);
       padding: 0.85rem 1.25rem;
       border-radius: 6px;
       border: 1px solid rgba(11, 42, 74, 0.05);
+      margin: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: left;
     }
 
     .attendee-dot {
+      display: inline-block;
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background-color: var(--azure);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .attendee-item span {
+      vertical-align: middle;
     }
 
     .speakers-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      display: block;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .speaker-item {
-      border-left: 3px solid rgba(184, 134, 11, 0.4);
-      padding-left: 1.25rem;
+      border-top: 1px solid rgba(184, 134, 11, 0.2);
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+
+    .speaker-item:first-child {
+      border-top: none;
     }
 
     .speaker-name {
@@ -469,13 +419,13 @@
 
     /* Policy-Free Block */
     .policy-section {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background-color: var(--white);
       text-align: center;
     }
 
     .policy-content {
-      max-width: 760px;
+      max-width: 650px;
       margin: 0 auto;
     }
 
@@ -490,9 +440,10 @@
     }
 
     .policy-title {
-      font-size: 2.25rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      color: var(--navy);
     }
 
     .policy-tag {
@@ -507,7 +458,7 @@
     }
 
     .policy-text {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--ink);
       opacity: 0.85;
       line-height: 1.6;
@@ -515,26 +466,26 @@
 
     /* Mapping Tags Section */
     .mapping-section {
-      padding: 7rem 0;
+      padding: 6rem 0;
       background-color: var(--cream);
-      text-align: left;
+      text-align: center;
     }
 
     .mapping-title {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 0.5rem;
     }
 
     .mapping-tag-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      display: block;
+      text-align: center;
       margin-top: 2.5rem;
     }
 
     .map-tag {
+      display: inline-block;
       background-color: var(--white);
       border: 1px solid rgba(11, 42, 74, 0.08);
       color: var(--navy);
@@ -543,13 +494,14 @@
       font-size: 0.8rem;
       font-weight: 500;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      margin: 0.4rem;
     }
 
     /* Closing Banner */
     .closing-banner {
       background-color: var(--navy-deep);
       color: var(--white);
-      padding: 7rem 0;
+      padding: 6rem 0;
       text-align: center;
     }
 
@@ -569,9 +521,12 @@
     }
 
     .btn-btn-grid {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
+      display: block;
+      text-align: center;
+    }
+
+    .btn-btn-grid .btn {
+      margin: 0.5rem;
     }
 
     .btn-secondary-light {
@@ -586,32 +541,56 @@
       transform: translateY(-2px);
     }
 
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--gold);
+      color: var(--white);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(11, 42, 74, 0.15);
+    }
+
     /* Global Footer */
     footer {
       background-color: var(--navy-deep);
       color: var(--white);
-      padding: 6rem 0 3rem 0;
+      padding: 5rem 0 3rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
     }
 
     .footer-grid {
-      display: grid;
-      grid-template-cols: 1.2fr repeat(3, 0.8fr);
-      gap: 4rem;
-      margin-bottom: 5rem;
+      display: block;
+      text-align: center;
     }
 
     .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      text-align: left;
+      display: block;
+      margin: 0 auto 3.5rem auto;
+      max-width: 450px;
+      text-align: center;
     }
 
     .footer-logo-img {
-      height: 48px;
+      height: 52px;
       width: auto;
-      align-self: flex-start;
+      display: block;
+      margin: 0 auto 1.5rem auto;
     }
 
     .footer-brand-text {
@@ -619,40 +598,45 @@
       color: var(--cream);
       opacity: 0.7;
       line-height: 1.6;
-      max-width: 320px;
+      margin-bottom: 1.5rem;
     }
 
     .footer-socials {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
+      display: block;
+      text-align: center;
     }
 
-    .social-btn {
-      width: 36px;
-      height: 36px;
+    .social-btn-footer {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.05);
       color: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+      margin: 0 0.5rem;
       transition: var(--transition);
+      vertical-align: middle;
     }
 
-    .social-btn:hover {
+    .social-btn-footer svg {
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+    }
+
+    .social-btn-footer:hover {
       background-color: var(--gold);
       color: var(--white);
       transform: translateY(-2px);
     }
 
-    .social-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
     .footer-col {
-      text-align: left;
+      display: block;
+      margin: 0 auto 3rem auto;
+      max-width: 320px;
+      text-align: center;
     }
 
     .footer-col-title {
@@ -660,16 +644,19 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--gold);
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .footer-links {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
     }
 
     .footer-link {
@@ -681,19 +668,17 @@
     .footer-link:hover {
       color: var(--white);
       opacity: 1;
-      padding-left: 2px;
     }
 
     .footer-coordinates {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-coordinate-item {
-      display: flex;
-      gap: 0.75rem;
+      display: block;
+      margin-bottom: 1.25rem;
       font-size: 0.85rem;
       color: var(--cream);
       opacity: 0.75;
@@ -703,105 +688,23 @@
       width: 16px;
       height: 16px;
       color: var(--gold);
-      flex-shrink: 0;
-      margin-top: 0.15rem;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .footer-coordinate-item span, .footer-coordinate-item a {
+      vertical-align: middle;
     }
 
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      margin-top: 3rem;
+      display: block;
+      text-align: center;
       font-size: 0.75rem;
       color: var(--cream);
       opacity: 0.6;
-    }
-
-    /* Responsiveness */
-    @media (max-width: 1024px) {
-      .fact-grid {
-        grid-template-cols: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .fact-item:nth-child(2) {
-        border-right: none;
-      }
-
-      .content-grid {
-        grid-template-cols: 1fr;
-        gap: 3.5rem;
-      }
-
-      .content-media {
-        max-width: 500px;
-        margin: 0 auto;
-      }
-
-      .columns-grid {
-        grid-template-cols: 1fr;
-        gap: 3.5rem;
-      }
-      
-      .footer-grid {
-        grid-template-cols: repeat(2, 1fr);
-        gap: 3rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .page-hero-title {
-        font-size: 2rem;
-      }
-
-      .fact-grid {
-        grid-template-cols: 1fr;
-        gap: 1.5rem;
-      }
-
-      .fact-item {
-        border-right: none !important;
-        padding-bottom: 1rem;
-      }
-
-      .fact-item:not(:last-child) {
-        border-bottom: 1px solid rgba(11, 42, 74, 0.1);
-      }
-
-      .attendees-list {
-        grid-template-cols: 1fr;
-      }
-
-      .btn-btn-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .btn-btn-grid .btn {
-        width: 100%;
-        max-width: 280px;
-      }
-
-      .footer-grid {
-        grid-template-cols: 1fr;
-        gap: 2.5rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
     }
   </style>
 </head>
@@ -811,7 +714,7 @@
   <header>
     <div class="container nav-container">
       <a href="index.html" class="logo-link">
-        <img src="images/miv-strategic-logo.png" alt="MIV Strategic Initiative Logo" class="logo-img">
+        <img src="https://res.cloudinary.com/pwkdspnn/image/upload/v1785923264/msi_logo_webp.webp" alt="MIV Strategic Initiative Logo" class="logo-img">
       </a>
       
       <ul class="nav-menu">
@@ -823,41 +726,15 @@
         <li><a href="contact.html" class="nav-link">Contact</a></li>
         <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
       </ul>
-
-      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
     </div>
   </header>
-
-  <!-- Mobile Sidebar Menu Overlay -->
-  <div class="mobile-menu-overlay" id="menu-overlay"></div>
-
-  <!-- Mobile Sidebar Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-    <ul class="mobile-nav-list">
-      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-      <li><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li><a href="programmes.html" class="mobile-nav-link">Programmes Hub</a></li>
-      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
-      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
-      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
-    </ul>
-  </div>
 
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="container">
-      <span class="page-hero-eyebrow">Academic Transformation</span>
-      <h1 class="page-hero-title">Building extraordinary legacy in Nigerian higher education.</h1>
-      <p class="page-hero-description">A strategic summit and banquet for lecturers and institutional management — addressing leadership, legacy, and institutional excellence. Purpose-driven. Policy-free.</p>
+      <span class="page-hero-eyebrow">Programmes Hub</span>
+      <h1 class="page-hero-title">Academic Summit & Banquet</h1>
+      <p class="page-hero-description">A purpose-driven and policy-free summit addressing leadership, legacy, and institutional excellence in higher education across Oyo State.</p>
     </div>
   </section>
 
@@ -865,103 +742,94 @@
   <section class="fact-strip">
     <div class="container fact-grid">
       <div class="fact-item">
-        <div class="fact-number">200+</div>
-        <div class="fact-label">In-Person Academic Leaders</div>
-      </div>
-      <div class="fact-item">
-        <div class="fact-number">800+</div>
-        <div class="fact-label">Online Livestream Audience</div>
-      </div>
-      <div class="fact-item">
-        <div class="fact-number">16 Aug 2025</div>
-        <div class="fact-label">Maiden Edition Date</div>
-      </div>
-      <div class="fact-item">
         <div class="fact-number">22</div>
-        <div class="fact-label">Institutions Mapped</div>
+        <div class="fact-label">Tertiary Institutions Mapped</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-number">1,000+</div>
+        <div class="fact-label">Lecturers Reached</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-number">1</div>
+        <div class="fact-label">Unified Objective</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-number">100%</div>
+        <div class="fact-label">Policy Free Mandate</div>
       </div>
     </div>
   </section>
 
-  <!-- Why This Summit Exists -->
+  <!-- Core Content Block -->
   <section class="content-section">
     <div class="container content-grid">
       <div class="content-left">
-        <span class="section-eyebrow">Why This Summit Exists</span>
-        <h2 class="section-title">A generation is only as strong as the integrity of those who teach it.</h2>
+        <span class="section-eyebrow">Restoring Gatekeeping</span>
+        <h2 class="section-title">Rebuilding the foundational legacy of higher learning.</h2>
         <div class="divider"></div>
         <div class="content-text">
-          <p>Universities, polytechnics, and colleges of education shape the convictions of every future professional who passes through them. The Academic Summit & Banquet exists to address pressing challenges in leadership, legacy, and institutional excellence facing Nigeria's tertiary institutions.</p>
-          <p>We focus on equipping educators and administrators to thrive both professionally and personally, as the true gatekeepers of society.</p>
+          <p>Higher education is the intellectual womb of a nation. Yet, institutional pressures and shifting societal standards have challenged the role of academic administrators and lecturers as moral and professional gatekeepers.</p>
+          <p>The Academic Summit and banquet is a deliberate space for tertiary education leaders—professors, lecturers, registrars, and directors—to reflect on values-driven leadership. We examine standard issues in professional ethics, student mentoring, and systemic integrity, raising educators who view their classrooms as a legacy assignment.</p>
         </div>
       </div>
       <div class="content-media">
-        <img src="images/academicsummit.png" alt="Academic Summit Banquet gathering" class="content-img">
+        <img src="images/academicsummit.png" alt="Lecturers listening at the Academic Summit" class="content-img">
       </div>
     </div>
   </section>
 
-  <!-- Who Attends & Speakers Columns -->
+  <!-- Attendees & Speakers Grid -->
   <section class="attendees-speakers">
     <div class="container columns-grid">
-      <!-- Left Column: Who Attends -->
+      <!-- Left Box: Attendees -->
       <div class="column-box">
         <div class="column-title-row">
           <div class="column-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
             </svg>
           </div>
-          <h3 class="column-heading">Who Attends</h3>
+          <h3 class="column-heading">Mapped Campuses</h3>
         </div>
-        <p style="margin-bottom: 2rem; opacity: 0.85; font-size: 0.95rem;">The summit convenes administrative and educational gatekeepers across higher education institutions:</p>
         <ul class="attendees-list">
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Vice-Chancellors</span></li>
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Professors</span></li>
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Registrars</span></li>
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Deans & Directors</span></li>
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Senior Lecturers</span></li>
-          <li class="attendee-item"><div class="attendee-dot"></div><span>Non-Academic Managers</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>University of Ibadan</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>The Polytechnic, Ibadan</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>Lead City University</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>UI College of Medicine</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>Federal Co-op College</span></li>
+          <li class="attendee-item"><span class="attendee-dot"></span><span>Oyo State Coll. of Health</span></li>
         </ul>
       </div>
 
-      <!-- Right Column: Speakers -->
+      <!-- Right Box: Speakers -->
       <div class="column-box">
         <div class="column-title-row">
           <div class="column-icon gold">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
-          <h3 class="column-heading">Notable Voices</h3>
+          <h3 class="column-heading">Faculty Leaders</h3>
         </div>
         <div class="speakers-list">
           <div class="speaker-item">
-            <h4 class="speaker-name">Mrs. Didi Walson-Jack</h4>
-            <span class="speaker-role">Head of Civil Service of the Federation</span>
+            <h4 class="speaker-name">Professor Abel Olayinka</h4>
+            <span class="speaker-role">Former Vice Chancellor, University of Ibadan</span>
           </div>
           <div class="speaker-item">
-            <h4 class="speaker-name">Emeritus Prof. A.O. Ogunkunle</h4>
-            <span class="speaker-role">Chairman, Governing Council, Emmanuel Alayande University</span>
+            <h4 class="speaker-name">Rev. Samson Ajetomobi</h4>
+            <span class="speaker-role">Convener & President, MIV</span>
           </div>
           <div class="speaker-item">
-            <h4 class="speaker-name">Prof. Kayode Adebowale</h4>
-            <span class="speaker-role">Vice-Chancellor, University of Ibadan</span>
-          </div>
-          <div class="speaker-item">
-            <h4 class="speaker-name">Prof. Razzaq Rom Kalilu</h4>
-            <span class="speaker-role">Vice-Chancellor, LAUTECH</span>
-          </div>
-          <div class="speaker-item">
-            <h4 class="speaker-name">Prof. O.S. Olufemi</h4>
-            <span class="speaker-role">Nanotechnology expert, University of Johannesburg</span>
+            <h4 class="speaker-name">Professor K.O. Adebowale</h4>
+            <span class="speaker-role">Vice Chancellor, University of Ibadan</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Policy-Free Section -->
+  <!-- Policy-Free Block -->
   <section class="policy-section">
     <div class="container policy-content">
       <div class="policy-icon">
@@ -969,41 +837,26 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
       </div>
-      <h2 class="policy-title">Is This Political?</h2>
-      <span class="policy-tag">No. This summit is purpose-driven and policy-free.</span>
-      <p class="policy-text">We exist to strengthen leadership and legacy in higher education — not to advance any partisan or denominational agenda. That single commitment has made this summit a trusted table for academic leaders across institutional lines.</p>
+      <h3 class="policy-title">Our Policy-Free Mandate</h3>
+      <span class="policy-tag">Independent & Non-Partisan</span>
+      <p class="policy-text">The Academic Summit does not seek to lobby, unionise, or formulate educational policy. We concentrate strictly on the character, legacy orientation, and moral capacity of the individual educator. It is a values-driven convocation, designed to strengthen the person behind the podium.</p>
     </div>
   </section>
 
-  <!-- Mapped Institutions -->
+  <!-- Mapping Tags Section -->
   <section class="mapping-section">
     <div class="container">
-      <h2 class="mapping-title">Tertiary & Specialized Mapping</h2>
-      <p style="opacity: 0.85; font-size: 0.95rem;">Collaborating across universities, polytechnics, colleges of education, and specialized institutes throughout Oyo State:</p>
-      
+      <h3 class="mapping-title">Institutional Footprint</h3>
+      <p style="opacity: 0.8; font-size: 0.95rem;">Professors and lecturers from the following Oyo State institutions have actively participated in our academic convocations:</p>
       <div class="mapping-tag-grid">
-        <span class="map-tag">University of Ibadan</span>
-        <span class="map-tag">LAUTECH</span>
+        <span class="map-tag">University of Ibadan (UI)</span>
+        <span class="map-tag">The Polytechnic, Ibadan</span>
         <span class="map-tag">Lead City University</span>
-        <span class="map-tag">Kola-Daisi University</span>
-        <span class="map-tag">Dominion University</span>
-        <span class="map-tag">Precious Cornerstone University</span>
-        <span class="map-tag">Dominican University</span>
-        <span class="map-tag">Ajayi Crowther University</span>
-        <span class="map-tag">Atiba University</span>
-        <span class="map-tag">First Technical University Ibadan</span>
-        <span class="map-tag">Emmanuel Alayande University of Education</span>
-        <span class="map-tag">The Polytechnic Ibadan</span>
-        <span class="map-tag">The Polytechnic Eruwa</span>
-        <span class="map-tag">Oke Ogun Polytechnic Saki</span>
-        <span class="map-tag">Adeseun Ogundoyin Polytechnic</span>
-        <span class="map-tag">Federal College of Education (Special) Oyo</span>
-        <span class="map-tag">Oyo State College of Education Lanlate</span>
-        <span class="map-tag">Federal College of Agriculture Moor Plantation</span>
-        <span class="map-tag">College of Agriculture and Technology Igbo-Ora</span>
-        <span class="map-tag">Federal College of Forestry Ibadan</span>
-        <span class="map-tag">Federal School of Statistics</span>
-        <span class="map-tag">Cooperative College Ibadan</span>
+        <span class="map-tag">Federal College of Animal Health & Production Technology</span>
+        <span class="map-tag">Federal Co-operative College, Ibadan</span>
+        <span class="map-tag">Oyo State College of Health Science & Technology</span>
+        <span class="map-tag">Dominican University, Ibadan</span>
+        <span class="map-tag">UI College of Medicine</span>
       </div>
     </div>
   </section>
@@ -1011,11 +864,11 @@
   <!-- Closing Banner -->
   <section class="closing-banner">
     <div class="container">
-      <h2 class="closing-title">The next Academic Summit is already being planned.</h2>
-      <p class="closing-text">Register your interest, nominate a colleague, or explore how your institution can partner with us.</p>
+      <h2 class="closing-title">Are you an academic leader or administrator?</h2>
+      <p class="closing-text">We invite you to participate in our next summit or banquet. Contact us to reserve an invitation for your department or nominate colleagues.</p>
       <div class="btn-btn-grid">
-        <a href="contact.html?interest=Nominating+a+Participant" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Register Your Interest</a>
-        <a href="partner.html?tier=Institutional" class="btn btn-secondary-light">Partner With This Programme</a>
+        <a href="contact.html?interest=Nominating+a+Participant" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Nominate a Participant</a>
+        <a href="partner.html?tier=Institutional" class="btn btn-secondary-light">Become an Institutional Partner</a>
       </div>
     </div>
   </section>
@@ -1023,24 +876,23 @@
   <!-- Global Footer -->
   <footer>
     <div class="container footer-grid">
-      <!-- Brand Col -->
       <div class="footer-brand">
         <a href="index.html">
-          <img src="images/miv-strategic-logo.png" alt="MIV Logo" class="footer-logo-img">
+          <img src="https://res.cloudinary.com/pwkdspnn/image/upload/v1785923264/msi_logo_webp.webp" alt="MIV Logo" class="footer-logo-img">
         </a>
         <p class="footer-brand-text">We go where the decisions are made—academia, security, business, and traditional governance—equipping leaders with character, capacity, and integrity for national transformation.</p>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <a href="https://www.facebook.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn-footer" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
             </svg>
           </a>
-          <a href="https://www.instagram.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <a href="https://www.instagram.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn-footer" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
             </svg>
           </a>
-          <a href="https://www.youtube.com/@mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+          <a href="https://www.youtube.com/@mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn-footer" aria-label="YouTube">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
@@ -1094,29 +946,5 @@
       <p>A strategic outreach arm of Men of Issachar Vision Inc.</p>
     </div>
   </footer>
-
-  <!-- Javascript -->
-  <script>
-    const menuOpenBtn = document.getElementById('menu-open-btn');
-    const menuCloseBtn = document.getElementById('menu-close-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuOverlay = document.getElementById('menu-overlay');
-
-    function openMobileMenu() {
-      mobileMenu.classList.add('open');
-      menuOverlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-      menuOverlay.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    menuOpenBtn.addEventListener('click', openMobileMenu);
-    menuCloseBtn.addEventListener('click', closeMobileMenu);
-    menuOverlay.addEventListener('click', closeMobileMenu);
-  </script>
 </body>
 </html>
