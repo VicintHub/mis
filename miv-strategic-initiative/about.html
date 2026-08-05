@@ -506,8 +506,8 @@
 
     .leaders-grid {
       display: grid;
-      grid-template-cols: repeat(2, 1fr);
-      gap: 3rem;
+      grid-template-cols: repeat(3, 1fr);
+      gap: 2.5rem;
       margin-top: 3rem;
     }
 
@@ -725,22 +725,13 @@
 
     /* Responsiveness */
     @media (max-width: 1024px) {
-      .story-grid {
-        grid-template-cols: 1fr;
-        gap: 3rem;
-      }
-      .quote-box {
-        max-width: 500px;
-        margin: 0 auto;
-      }
       .values-grid {
         grid-template-cols: repeat(2, 1fr);
         gap: 1.5rem;
       }
       .leaders-grid {
-        grid-template-cols: 1fr;
-        max-width: 600px;
-        margin: 3rem auto 0 auto;
+        grid-template-cols: repeat(2, 1fr);
+        gap: 2rem;
       }
       .footer-grid {
         grid-template-cols: repeat(2, 1fr);
@@ -758,16 +749,28 @@
       .logo-img {
         height: 46px;
       }
-      .values-grid {
+      .story-grid {
         grid-template-cols: 1fr;
-        max-width: 480px;
+        gap: 3rem;
+      }
+      .quote-box {
+        max-width: 500px;
         margin: 0 auto;
       }
+      .values-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .leaders-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 2rem;
+      }
       .footer-grid {
-        grid-template-cols: 1fr;
+        grid-template-cols: repeat(2, 1fr);
         gap: 2.5rem;
       }
-      .footer-brand, .footer-col {
+      .footer-brand {
+        grid-column: span 2;
         text-align: center;
         align-items: center;
       }
@@ -784,6 +787,26 @@
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .values-grid {
+        grid-template-cols: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .leaders-grid {
+        grid-template-cols: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2rem;
+      }
+      .footer-brand {
+        grid-column: span 1;
       }
     }
   </style>

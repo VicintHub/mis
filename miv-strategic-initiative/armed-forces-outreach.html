@@ -794,6 +794,25 @@
 
     /* Responsiveness */
     @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .logo-img {
+        height: 46px;
+      }
+      .page-hero-title {
+        font-size: 2.25rem;
+      }
       .intro-grid {
         grid-template-cols: 1fr;
         gap: 3rem;
@@ -819,42 +838,22 @@
       .widows-content {
         text-align: center;
       }
-      .vocations-grid {
-        max-width: 500px;
-        margin: 2rem auto 0 auto;
-      }
-      .footer-grid {
-        grid-template-cols: repeat(2, 1fr);
-        gap: 3rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .logo-img {
-        height: 46px;
-      }
-      .page-hero-title {
-        font-size: 2.25rem;
-      }
       .fact-item {
         width: 45%;
         border-right: none;
         margin-bottom: 1.5rem;
       }
       .vocations-grid {
-        grid-template-cols: 1fr;
+        grid-template-cols: repeat(2, 1fr);
+        max-width: 500px;
+        margin: 2rem auto 0 auto;
       }
       .footer-grid {
-        grid-template-cols: 1fr;
+        grid-template-cols: repeat(2, 1fr);
         gap: 2.5rem;
       }
-      .footer-brand, .footer-col {
+      .footer-brand {
+        grid-column: span 2;
         text-align: center;
         align-items: center;
       }
@@ -871,6 +870,19 @@
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .vocations-grid {
+        grid-template-cols: 1fr;
+      }
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2rem;
+      }
+      .footer-brand {
+        grid-column: span 1;
       }
     }
   </style>
