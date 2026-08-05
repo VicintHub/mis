@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — MIV Strategic Initiative</title>
+  <meta name="description" content="Learn about the history, vision, and leadership of the MIV Strategic Initiative, the strategic outreach arm of Men of Issachar Vision Inc.">
+  <link rel="icon" href="images/favicon.avif" type="image/avif">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0B2A4A;
+      --navy-deep: #071A2E;
+      --azure: #2E6FB0;
+      --crimson: #6E1E28;
+      --gold: #B8860B;
+      --cream: #F7F3EA;
+      --ink: #1A1D22;
+      --white: #ffffff;
+      --font-title: 'Outfit', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(11, 42, 74, 0.08);
+      height: 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--navy);
+      color: var(--white) !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--navy);
+    }
+
+    .nav-cta:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.15);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Mobile Sidebar Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      z-index: 200;
+      padding: 2.5rem 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.25rem;
+    }
+
+    .mobile-menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 26, 46, 0.4);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 5rem 0;
+      text-align: left;
+    }
+
+    .page-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-hero-title {
+      font-size: 2.75rem;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    .page-hero-description {
+      font-size: 1.1rem;
+      color: var(--cream);
+      opacity: 0.85;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* Story Section */
+    .story-section {
+      padding: 7rem 0;
+      background-color: var(--white);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-cols: 1.2fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+
+    .story-content {
+      text-align: left;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background-color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .story-body {
+      font-size: 1rem;
+      color: var(--ink);
+      opacity: 0.85;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Pull Quote */
+    .quote-box {
+      background-color: var(--cream);
+      border: 1px solid rgba(184, 134, 11, 0.2);
+      border-radius: 12px;
+      padding: 3rem;
+      position: relative;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(7, 26, 46, 0.02);
+    }
+
+    .quote-mark {
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+    }
+
+    .quote-text {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+      position: relative;
+      z-index: 10;
+    }
+
+    .quote-author {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--crimson);
+      margin-top: 1.5rem;
+      display: block;
+    }
+
+    /* Core Values */
+    .values-section {
+      padding: 7rem 0;
+      background-color: var(--cream);
+      border-y: 1px solid rgba(11, 42, 74, 0.08);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-cols: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .value-card {
+      background-color: var(--white);
+      border: 1px solid rgba(7, 26, 46, 0.05);
+      border-radius: 10px;
+      padding: 2.5rem;
+      text-align: left;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+    }
+
+    .value-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: rgba(11, 42, 74, 0.05);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .value-icon.crimson {
+      background-color: rgba(110, 30, 40, 0.05);
+      color: var(--crimson);
+    }
+
+    .value-icon.gold {
+      background-color: rgba(184, 134, 11, 0.05);
+      color: var(--gold);
+    }
+
+    .value-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .value-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .value-text {
+      font-size: 0.9rem;
+      color: var(--ink);
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Leadership Section */
+    .leadership-section {
+      padding: 7rem 0;
+      background-color: var(--white);
+    }
+
+    .leaders-grid {
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 3.5rem;
+    }
+
+    .leader-card {
+      display: flex;
+      gap: 2rem;
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--cream);
+      background-color: rgba(247, 243, 234, 0.15);
+      text-align: left;
+      align-items: flex-start;
+      box-shadow: 0 8px 20px rgba(7, 26, 46, 0.02);
+    }
+
+    .leader-avatar-container {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--navy);
+    }
+
+    .leader-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .leader-initials {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .leader-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .leader-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .leader-role {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--crimson);
+    }
+
+    .leader-bio {
+      font-size: 0.85rem;
+      color: var(--ink);
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    /* Global Footer */
+    footer {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 6rem 0 3rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-cols: 1.2fr repeat(3, 0.8fr);
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .footer-logo-img {
+      height: 48px;
+      width: auto;
+      align-self: flex-start;
+    }
+
+    .footer-brand-text {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.7;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col {
+      text-align: left;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-link {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-link:hover {
+      color: var(--white);
+      opacity: 1;
+      padding-left: 2px;
+    }
+
+    .footer-coordinates {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-coordinate-item {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-coordinate-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--cream);
+      opacity: 0.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .story-grid {
+        grid-template-cols: 1fr;
+        gap: 3.5rem;
+      }
+
+      .quote-box {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .values-grid {
+        grid-template-cols: 1fr;
+        gap: 2rem;
+      }
+
+      .leaders-grid {
+        grid-template-cols: 1fr;
+        gap: 2rem;
+      }
+      
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .page-hero-title {
+        font-size: 2rem;
+      }
+
+      .leader-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/miv-strategic-logo.png" alt="MIV Strategic Initiative Logo" class="logo-img">
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="programmes.html" class="nav-link">Programmes</a></li>
+        <li><a href="impact.html" class="nav-link">Impact</a></li>
+        <li><a href="partner.html" class="nav-link">Partner</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
+      </ul>
+
+      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li><a href="programmes.html" class="mobile-nav-link">Programmes Hub</a></li>
+      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
+      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero-eyebrow">Who We Are</span>
+      <h1 class="page-hero-title">We go where the decisions are already being made.</h1>
+      <p class="page-hero-description">MIV Strategic Initiative is the strategic outreach arm of Men of Issachar Vision Inc. — carrying a 35-year-old vision into academia, security, business, and traditional governance.</p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story-section">
+    <div class="container story-grid">
+      <div class="story-content">
+        <span class="section-eyebrow">Our Story</span>
+        <h2 class="section-title">A burden that began long before 2025.</h2>
+        <div class="divider"></div>
+        <div class="story-body">
+          <p>The story of MIV Strategic Initiative did not begin with any single event. It is the outworking of a burden God laid on the Founder of Men of Issachar Vision Inc., Rev. Samson Ajetomobi, many years ago — to intentionally influence strategic sectors of society beyond the four walls of the church.</p>
+          <p>What began as Leadership Development gatherings for legal practitioners, public office holders, and professionals grew, over time, into a dedicated strategic summit for senior Armed Forces and security officers — and from there, into a deliberate, sector-based strategy now expressed through four flagship programmes reaching academia, security, business, and traditional leadership.</p>
+          <p>Today, the Initiative exists to become a nationally recognised platform where government institutions, academia, business leaders, security agencies, development partners, and faith communities collaborate to build a more ethical, prosperous, and transformed society.</p>
+        </div>
+      </div>
+      <div class="quote-box">
+        <div class="quote-mark">“</div>
+        <p class="quote-text">We do not ask a nation's institutions to come to church. We bring the character of Christ to where those institutions already meet.</p>
+        <span class="quote-author">— The Guiding Conviction</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values / Mission / Vision / Approach -->
+  <section class="values-section">
+    <div class="container">
+      <div class="values-grid">
+        <!-- Mission -->
+        <div class="value-card">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Our Mission</h3>
+          <p class="value-text">To intentionally influence strategic sectors of society — academia, security, business, and governance — through Christ-centred transformation, ethical leadership development, and practical capacity building.</p>
+        </div>
+
+        <!-- Vision -->
+        <div class="value-card">
+          <div class="value-icon crimson">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Our Vision</h3>
+          <p class="value-text">A society where the men and women who teach, defend, build, and govern are equipped in both character and competence — producing institutions of integrity and a nation reflecting excellence in every sphere of public life.</p>
+        </div>
+
+        <!-- Approach -->
+        <div class="value-card">
+          <div class="value-icon gold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <h3 class="value-title">Our Approach</h3>
+          <p class="value-text">We deliver genuine professional value first — leadership insight, funding access, welfare support — so that participation is sought after, not merely tolerated. Character and conviction follow naturally, carried through testimony and example.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="leadership-section" id="leadership">
+    <div class="container">
+      <div style="text-align: left; max-width: 700px; margin-bottom: 2rem;">
+        <span class="section-eyebrow">Leadership</span>
+        <h2 class="section-title">Spiritual oversight, steady hands.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="leaders-grid">
+        <!-- Leader 1 -->
+        <div class="leader-card">
+          <div class="leader-avatar-container">
+            <img src="images/rev-samson.jpg" alt="Rev. Samson Ajetomobi" class="leader-img">
+          </div>
+          <div class="leader-info">
+            <h3 class="leader-name">Rev. Samson Ajetomobi</h3>
+            <span class="leader-role">Founder & President, Men of Issachar Vision Inc.</span>
+            <p class="leader-bio">A trained Agricultural Engineer and certified Professional Manager (UK), Rev. Ajetomobi is an alumnus of Haggai Institute (Maui, USA), Overseer of Redemption Faith Churches, and Chairman of the Pentecostal Fellowship of Nigeria (PFN), Oyo State Chapter. He is the author of several books including 'Not Offended', 'Running Well', and 'The Light Bearers'.</p>
+          </div>
+        </div>
+
+        <!-- Leader 2 -->
+        <div class="leader-card">
+          <div class="leader-avatar-container">
+            <img src="images/rev-stella.png" alt="Rev. (Mrs) Stella Ajetomobi" class="leader-img">
+          </div>
+          <div class="leader-info">
+            <h3 class="leader-name">Rev. (Mrs) Stella Ajetomobi</h3>
+            <span class="leader-role">Vice President, Men of Issachar Vision Inc.</span>
+            <p class="leader-bio">Rev. Stella holds a Master's degree in Personnel Psychology and hosts the Back to Bethel Retreats for ministers' wives. She coordinates the Divine Well Global Foundation and is the author of 'Dressing for Your Destination', 'Solitude', and 'Bridging the Gap'.</p>
+          </div>
+        </div>
+
+        <!-- Leader 3 -->
+        <div class="leader-card">
+          <div class="leader-avatar-container">
+            <span class="leader-initials">VI</span>
+          </div>
+          <div class="leader-info">
+            <h3 class="leader-name">Mr. Victor Idowu</h3>
+            <span class="leader-role">MIV Strategic Initiative Coordinator</span>
+            <p class="leader-bio">Coordinating operations and strategic outreach campaigns. Directs sector alignment and verified evaluations for security outreach, academic banquets, and business collaborations.</p>
+          </div>
+        </div>
+
+        <!-- Leader 4 -->
+        <div class="leader-card">
+          <div class="leader-avatar-container">
+            <span class="leader-initials">LO</span>
+          </div>
+          <div class="leader-info">
+            <h3 class="leader-name">Arch. Lola Olufemi Oyenekan</h3>
+            <span class="leader-role">General Supervising Leader</span>
+            <p class="leader-bio">Providing executive supervision, architectural oversight, and governance structures for MIV Strategic Initiative's planning and project lifecycles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <!-- Brand Col -->
+      <div class="footer-brand">
+        <a href="index.html">
+          <img src="images/miv-strategic-logo.png" alt="MIV Logo" class="footer-logo-img">
+        </a>
+        <p class="footer-brand-text">We go where the decisions are made—academia, security, business, and traditional governance—equipping leaders with character, capacity, and integrity for national transformation.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About MSI</a></li>
+          <li><a href="programmes.html" class="footer-link">Programmes</a></li>
+          <li><a href="impact.html" class="footer-link">Impact Report</a></li>
+          <li><a href="partner.html" class="footer-link">Partner / Get Involved</a></li>
+        </ul>
+      </div>
+
+      <!-- Programmes -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Programmes</h4>
+        <ul class="footer-links">
+          <li><a href="academic-summit.html" class="footer-link">Academic Summit</a></li>
+          <li><a href="business-summit.html" class="footer-link">Business Summit</a></li>
+          <li><a href="armed-forces-outreach.html" class="footer-link">Armed Forces Outreach</a></li>
+          <li><a href="royal-fathers-conference.html" class="footer-link">Royal Fathers' Conference</a></li>
+        </ul>
+      </div>
+
+      <!-- Coordinates -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-coordinates">
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Leadership & Mission Centre, Olororo Junction, Ojoo, Ibadan, Nigeria</span>
+          </li>
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:info@mivstrategicinitiative.com.ng" style="color: inherit;">info@mivstrategicinitiative.com.ng</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright Strip -->
+    <div class="container footer-bottom">
+      <p>&copy; 2026 MIV Strategic Initiative. All rights reserved.</p>
+      <p>A strategic outreach arm of Men of Issachar Vision Inc.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Logic -->
+  <script>
+    const menuOpenBtn = document.getElementById('menu-open-btn');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    menuOpenBtn.addEventListener('click', openMobileMenu);
+    menuCloseBtn.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+  </script>
+</body>
+</html>

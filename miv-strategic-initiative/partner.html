@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Partner — MIV Strategic Initiative</title>
+  <meta name="description" content="Join us in driving national transformation across academia, security, business, and traditional governance. Secure download of our Institutional Profile.">
+  <link rel="icon" href="images/favicon.avif" type="image/avif">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0B2A4A;
+      --navy-deep: #071A2E;
+      --azure: #2E6FB0;
+      --crimson: #6E1E28;
+      --gold: #B8860B;
+      --cream: #F7F3EA;
+      --ink: #1A1D22;
+      --white: #ffffff;
+      --font-title: 'Outfit', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(11, 42, 74, 0.08);
+      height: 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--navy);
+      color: var(--white) !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--navy);
+    }
+
+    .nav-cta:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.15);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Mobile Sidebar Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      z-index: 200;
+      padding: 2.5rem 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.25rem;
+    }
+
+    .mobile-menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 26, 46, 0.4);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 5rem 0;
+      text-align: left;
+    }
+
+    .page-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-hero-title {
+      font-size: 2.75rem;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+    }
+
+    .page-hero-description {
+      font-size: 1.1rem;
+      color: var(--cream);
+      opacity: 0.85;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* Why Section */
+    .why-partner-section {
+      padding: 7rem 0;
+      background-color: var(--white);
+    }
+
+    .why-partner-grid {
+      display: grid;
+      grid-template-cols: 1fr 1.2fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+
+    .why-partner-media {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1.4;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--cream);
+    }
+
+    .why-partner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .why-partner-content {
+      text-align: left;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background-color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .why-partner-text {
+      font-size: 1.05rem;
+      color: var(--ink);
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* Ways to Partner & Tiers */
+    .ways-tiers-section {
+      padding: 7rem 0;
+      background-color: var(--cream);
+      border-y: 1px solid rgba(11, 42, 74, 0.08);
+    }
+
+    .two-column-layout {
+      display: grid;
+      grid-template-cols: 1.2fr 1.8fr;
+      gap: 4.5rem;
+    }
+
+    .ways-column {
+      text-align: left;
+    }
+
+    .ways-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .way-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background-color: var(--white);
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid rgba(11, 42, 74, 0.05);
+    }
+
+    .way-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .way-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .way-title {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .way-desc {
+      font-size: 0.85rem;
+      color: var(--ink);
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    /* Tiers Table Style */
+    .tiers-column {
+      text-align: left;
+    }
+
+    .tiers-table-container {
+      width: 100%;
+      overflow-x: auto;
+      background-color: var(--white);
+      border: 1px solid rgba(11, 42, 74, 0.08);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+      margin-top: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: var(--font-title);
+      font-weight: 600;
+      text-align: left;
+      padding: 1.2rem 1.5rem;
+    }
+
+    td {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid rgba(11, 42, 74, 0.06);
+      color: var(--ink);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(247, 243, 234, 0.25);
+    }
+
+    .tier-name {
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .tier-desc {
+      opacity: 0.85;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      padding: 7rem 0;
+      background-color: var(--white);
+      text-align: center;
+    }
+
+    .benefits-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      text-align: left;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.25rem;
+    }
+
+    .benefit-title {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .benefit-desc {
+      font-size: 0.85rem;
+      color: var(--ink);
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    /* Closing / Profile Download */
+    .closing-banner {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 7rem 0;
+      text-align: center;
+    }
+
+    .closing-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .closing-text {
+      color: var(--cream);
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      font-size: 1.05rem;
+    }
+
+    .btn-btn-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--gold);
+      color: var(--white);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(11, 42, 74, 0.15);
+    }
+
+    .btn-secondary-light {
+      background-color: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary-light:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Global Footer */
+    footer {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 6rem 0 3rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-cols: 1.2fr repeat(3, 0.8fr);
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .footer-logo-img {
+      height: 48px;
+      width: auto;
+      align-self: flex-start;
+    }
+
+    .footer-brand-text {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.7;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col {
+      text-align: left;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-link {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-link:hover {
+      color: var(--white);
+      opacity: 1;
+      padding-left: 2px;
+    }
+
+    .footer-coordinates {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-coordinate-item {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-coordinate-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--cream);
+      opacity: 0.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .why-partner-grid {
+        grid-template-cols: 1fr;
+        gap: 3.5rem;
+      }
+
+      .why-partner-media {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .two-column-layout {
+        grid-template-cols: 1fr;
+        gap: 3.5rem;
+      }
+      
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .page-hero-title {
+        font-size: 2rem;
+      }
+
+      .benefits-grid {
+        grid-template-cols: 1fr;
+        gap: 1.5rem;
+      }
+
+      .btn-btn-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn-btn-grid .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/miv-strategic-logo.png" alt="MIV Strategic Initiative Logo" class="logo-img">
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="programmes.html" class="nav-link">Programmes</a></li>
+        <li><a href="impact.html" class="nav-link">Impact</a></li>
+        <li><a href="partner.html" class="nav-link active">Partner</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
+      </ul>
+
+      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li><a href="programmes.html" class="mobile-nav-link">Programmes Hub</a></li>
+      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
+      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero-eyebrow">Become a Partner</span>
+      <h1 class="page-hero-title">National transformation is not one institution's work.</h1>
+      <p class="page-hero-description">It requires universities willing to open their halls, agencies willing to open their gates, businesses willing to open their networks, and partners willing to open their hands.</p>
+    </div>
+  </section>
+
+  <!-- Why Partner -->
+  <section class="why-partner-section">
+    <div class="container why-partner-grid">
+      <div class="why-partner-media">
+        <img src="images/giving-graphic.jpeg" alt="Partnering for generational work" class="why-partner-img">
+      </div>
+      <div class="why-partner-content">
+        <span class="section-eyebrow">Why Partner With MSI</span>
+        <h2 class="section-title">A targeted, sector-specific investment.</h2>
+        <div class="divider"></div>
+        <div class="why-partner-text">
+          <p>Every contribution becomes part of a measurable, generational work: a widow trained into a trade. An entrepreneur funded into a business. A young officer strengthened in integrity. A lecturer renewed in purpose.</p>
+          <p style="margin-top: 1.25rem;">This is not charity in the abstract — it is targeted, sector-specific investment in the people who will shape this nation's next fifty years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ways to Partner & Tiers (Split section) -->
+  <section class="ways-tiers-section">
+    <div class="container two-column-layout">
+      <!-- Ways Column -->
+      <div class="ways-column">
+        <span class="section-eyebrow">Engagement Channels</span>
+        <h2 class="section-title">Ways to Partner</h2>
+        <div class="divider" style="margin-bottom: 1rem;"></div>
+        <p style="opacity: 0.85; font-size: 0.95rem;">You can engage with MSI across multiple capacity channels:</p>
+        
+        <div class="ways-list">
+          <div class="way-item">
+            <div class="way-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16v1M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="way-title">Financial Giving & Grants</h4>
+              <p class="way-desc">Direct financial support toward core programme operations, event venues, and catering.</p>
+            </div>
+          </div>
+
+          <div class="way-item">
+            <div class="way-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="way-title">Business & Welfare Funding</h4>
+              <p class="way-desc">Funding commercial business grants for pitch competition winners, or vocational training sponsorships for widows.</p>
+            </div>
+          </div>
+
+          <div class="way-item">
+            <div class="way-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="way-title">Professional Expertise</h4>
+              <p class="way-desc">Providing mentorship, specialized lectures, or international collaborative research papers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tiers Column -->
+      <div class="tiers-column">
+        <span class="section-eyebrow">Strategic Alliances</span>
+        <h2 class="section-title">Partnership Tiers</h2>
+        <div class="divider" style="margin-bottom: 1rem;"></div>
+        <p style="opacity: 0.85; font-size: 0.95rem;">Aligning your participation level with MSI's developmental strategy:</p>
+        
+        <div class="tiers-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Focus & Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tier-name">Vision Partner</td>
+                <td class="tier-desc">Entry-level support sustaining ongoing operations and core summit preparations.</td>
+              </tr>
+              <tr>
+                <td class="tier-name">Impact Partner</td>
+                <td class="tier-desc">Sponsorship tied to specific welfare projects (e.g. training a widow) or event modules.</td>
+              </tr>
+              <tr>
+                <td class="tier-name">Institutional Partner</td>
+                <td class="tier-desc">Formal collaborations between universities, traditional ruler councils, or paramilitaries.</td>
+              </tr>
+              <tr>
+                <td class="tier-name">Corporate Partner</td>
+                <td class="tier-desc">Businesses extending corporate social responsibility (CSR) budgets or event sponsorship.</td>
+              </tr>
+              <tr>
+                <td class="tier-name">Legacy Partner</td>
+                <td class="tier-desc">Long-term, recurring commitment sustaining our multi-year institutional transformations.</td>
+              </tr>
+              <tr>
+                <td class="tier-name">Strategic Alliance</td>
+                <td class="tier-desc">Development foundations or international bodies engaged at a policy-level integration.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container benefits-content">
+      <span class="section-eyebrow">Partner Benefits</span>
+      <h2 class="section-title">What Partners Receive</h2>
+      <div class="divider" style="margin-inline: auto;"></div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div>
+            <h4 class="benefit-title">Periodic Impact Reports</h4>
+            <p class="benefit-desc">Receive clear, unembellished updates on where funding goes, complete with vocational tracking audits.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div>
+            <h4 class="benefit-title">Strategic Invitations</h4>
+            <p class="benefit-desc">Exclusive invitations to seatings at academic summit banquets, business pitches, and ceremonies.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div>
+            <h4 class="benefit-title">Corporate Recognition</h4>
+            <p class="benefit-desc">Public acknowledgement and logo placements on brochures, backdrops, and media publications (optional).</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div>
+            <h4 class="benefit-title"> lasting Satisfaction</h4>
+            <p class="benefit-desc">The long-term fulfillment of investing directly in the moral character and competence of Nigeria's gatekeepers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing / Profile Download -->
+  <section class="closing-banner">
+    <div class="container">
+      <h2 class="closing-title">Download our Institutional Profile</h2>
+      <p class="closing-text">Read a comprehensive breakdown of our structure, program details, leadership, and operational compliance policies.</p>
+      <div class="btn-btn-grid">
+        <!-- Direct File download link -->
+        <a href="documents/MIV_Strategic_Initiative_Institutional_Profile.docx" download class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Download Profile (DOCX)</a>
+        <a href="contact.html?interest=Partnership" class="btn btn-secondary-light">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <!-- Brand Col -->
+      <div class="footer-brand">
+        <a href="index.html">
+          <img src="images/miv-strategic-logo.png" alt="MIV Logo" class="footer-logo-img">
+        </a>
+        <p class="footer-brand-text">We go where the decisions are made—academia, security, business, and traditional governance—equipping leaders with character, capacity, and integrity for national transformation.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About MSI</a></li>
+          <li><a href="programmes.html" class="footer-link">Programmes</a></li>
+          <li><a href="impact.html" class="footer-link">Impact Report</a></li>
+          <li><a href="partner.html" class="footer-link">Partner / Get Involved</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Programmes</h4>
+        <ul class="footer-links">
+          <li><a href="academic-summit.html" class="footer-link">Academic Summit</a></li>
+          <li><a href="business-summit.html" class="footer-link">Business Summit</a></li>
+          <li><a href="armed-forces-outreach.html" class="footer-link">Armed Forces Outreach</a></li>
+          <li><a href="royal-fathers-conference.html" class="footer-link">Royal Fathers' Conference</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-coordinates">
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Leadership & Mission Centre, Olororo Junction, Ojoo, Ibadan, Nigeria</span>
+          </li>
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:info@mivstrategicinitiative.com.ng" style="color: inherit;">info@mivstrategicinitiative.com.ng</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 MIV Strategic Initiative. All rights reserved.</p>
+      <p>A strategic outreach arm of Men of Issachar Vision Inc.</p>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script>
+    const menuOpenBtn = document.getElementById('menu-open-btn');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    menuOpenBtn.addEventListener('click', openMobileMenu);
+    menuCloseBtn.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+  </script>
+</body>
+</html>

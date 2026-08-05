@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIV Strategic Initiative — National Transformation Outreach</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="We intentionally influence strategic sectors of society—academia, security, business, and governance—equipping leaders with character, capacity, and integrity for national transformation.">
+  <link rel="icon" href="images/favicon.avif" type="image/avif">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Core Inline Styling (CSS Variables & Responsive Utility classes) -->
+  <style>
+    :root {
+      --navy: #0B2A4A;
+      --navy-deep: #071A2E;
+      --azure: #2E6FB0;
+      --crimson: #6E1E28;
+      --gold: #B8860B;
+      --cream: #F7F3EA;
+      --ink: #1A1D22;
+      --white: #ffffff;
+      --font-title: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-b: 1px solid rgba(11, 42, 74, 0.08);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--navy);
+      color: var(--white) !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--navy);
+    }
+
+    .nav-cta:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.15);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.5rem;
+    }
+
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Mobile Sidebar Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+      z-index: 200;
+      padding: 2.5rem 2rem;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--navy);
+      padding: 0.25rem;
+    }
+
+    .mobile-menu-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(7, 26, 46, 0.4);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0;
+      background: radial-gradient(circle at 85% 20%, rgba(247, 243, 234, 0.5) 0%, transparent 60%);
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-cols: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: inline-block;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.25rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      color: var(--crimson);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--ink);
+      opacity: 0.85;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--gold);
+      color: var(--white);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(11, 42, 74, 0.15);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(11, 42, 74, 0.25);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(11, 42, 74, 0.03);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-img-container {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--cream);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Trust Strip */
+    .trust-strip {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 3rem 0;
+      border-y: 1px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-cols: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .trust-item:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .trust-number {
+      font-family: var(--font-title);
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      opacity: 0.8;
+    }
+
+    /* Teaser / Story Section */
+    .teaser-section {
+      padding: 8rem 0;
+      background-color: var(--cream);
+    }
+
+    .teaser-grid {
+      display: grid;
+      grid-template-cols: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background-color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .teaser-text {
+      font-size: 1.05rem;
+      color: var(--ink);
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .teaser-media {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--white);
+    }
+
+    .teaser-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Compass / Convergence Section */
+    .compass-section {
+      padding: 8rem 0;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 5rem auto;
+    }
+
+    .section-header-center .divider {
+      margin: 1.5rem auto;
+    }
+
+    .compass-grid {
+      display: grid;
+      grid-template-cols: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .compass-graphic-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .compass-svg-wrapper {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+    }
+
+    .compass-svg-wrapper svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Interactive SVG segments */
+    .compass-wedge {
+      fill: transparent;
+      stroke-width: 1.5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .compass-wedge:hover, .compass-wedge.active {
+      fill: rgba(184, 134, 11, 0.08);
+      stroke-width: 3px;
+    }
+
+    .wedge-academic { stroke: var(--azure); }
+    .wedge-academic:hover, .wedge-academic.active { fill: rgba(46, 111, 176, 0.12); }
+    
+    .wedge-security { stroke: var(--crimson); }
+    .wedge-security:hover, .wedge-security.active { fill: rgba(110, 30, 40, 0.12); }
+
+    .wedge-business { stroke: var(--gold); }
+    .wedge-business:hover, .wedge-business.active { fill: rgba(184, 134, 11, 0.12); }
+
+    .wedge-royal { stroke: var(--navy); }
+    .wedge-royal:hover, .wedge-royal.active { fill: rgba(11, 42, 74, 0.1); }
+
+    .compass-label-text {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .label-academic { fill: var(--azure); }
+    .label-security { fill: var(--crimson); }
+    .label-business { fill: var(--gold); }
+    .label-royal { fill: var(--navy); }
+
+    .compass-core {
+      fill: var(--navy);
+      stroke: var(--gold);
+      stroke-width: 2.5px;
+    }
+
+    /* Convergence Info Box */
+    .compass-card {
+      background-color: var(--white);
+      border: 1px solid var(--cream);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(7, 26, 46, 0.03);
+      text-align: left;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .compass-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .compass-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+    }
+
+    .compass-card-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .compass-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .compass-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--crimson);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .compass-card-body {
+      font-size: 1rem;
+      color: var(--ink);
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      min-height: 80px;
+    }
+
+    .compass-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--navy);
+      border-bottom: 2px dashed rgba(11, 42, 74, 0.2);
+      padding-bottom: 0.25rem;
+    }
+
+    .compass-card-cta:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* Programmes / Cards section */
+    .programmes-section {
+      padding: 8rem 0;
+      background-color: var(--cream);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(7, 26, 46, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      border-color: rgba(184, 134, 11, 0.15);
+    }
+
+    .card-media {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.03);
+    }
+
+    .card-content {
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: var(--ink);
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      align-self: flex-start;
+    }
+
+    .card-link:hover {
+      color: var(--gold);
+    }
+
+    /* Impact Strip / Section */
+    .impact-section {
+      padding: 8rem 0;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-cols: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .impact-indicators {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .indicator-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--cream);
+      background-color: rgba(247, 243, 234, 0.2);
+      text-align: left;
+      transition: var(--transition);
+    }
+
+    .indicator-item:hover {
+      background-color: var(--white);
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(184, 134, 11, 0.05);
+    }
+
+    .indicator-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .indicator-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .indicator-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .indicator-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      opacity: 0.5;
+    }
+
+    .indicator-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* Closing CTA banner */
+    .cta-banner {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      border-top: 1px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .cta-banner-content {
+      position: relative;
+      z-index: 10;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .cta-banner-title {
+      color: var(--white);
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-banner-text {
+      color: var(--cream);
+      opacity: 0.85;
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* Decorative grid overlay */
+    .cta-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-size: 4rem 4rem;
+      background-image: 
+        linear-gradient(to right, rgba(247, 243, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(247, 243, 234, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 60%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Global Footer */
+    footer {
+      background-color: var(--navy-deep);
+      color: var(--white);
+      padding: 6rem 0 3rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-cols: 1.2fr repeat(3, 0.8fr);
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .footer-logo-img {
+      height: 48px;
+      width: auto;
+      align-self: flex-start;
+    }
+
+    .footer-brand-text {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.7;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col {
+      text-align: left;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-link {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-link:hover {
+      color: var(--white);
+      opacity: 1;
+      padding-left: 2px;
+    }
+
+    .footer-coordinates {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-coordinate-item {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.75;
+    }
+
+    .footer-coordinate-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--cream);
+      opacity: 0.6;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .hero-grid, .teaser-grid, .compass-grid, .impact-grid {
+        grid-template-cols: 1fr;
+        gap: 3.5rem;
+      }
+      
+      .hero, .teaser-section, .compass-section, .programmes-section, .impact-section, .cta-banner {
+        padding: 5rem 0;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-inline: auto;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-media {
+        max-width: 540px;
+        margin: 0 auto;
+      }
+
+      .teaser-media {
+        order: first;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .compass-graphic-container {
+        justify-content: center;
+      }
+      
+      .footer-grid {
+        grid-template-cols: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .trust-grid {
+        grid-template-cols: repeat(2, 1fr);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .trust-item:nth-child(1), .trust-item:nth-child(2) {
+        margin-bottom: 2rem;
+      }
+
+      .cards-grid {
+        grid-template-cols: 1fr;
+      }
+
+      .cta-banner-title {
+        font-size: 2rem;
+      }
+
+      .footer-grid {
+        grid-template-cols: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/miv-strategic-logo.png" alt="MIV Strategic Initiative Logo" class="logo-img">
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="programmes.html" class="nav-link">Programmes</a></li>
+        <li><a href="impact.html" class="nav-link">Impact</a></li>
+        <li><a href="partner.html" class="nav-link">Partner</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="partner.html" class="nav-cta">Partner With Us</a></li>
+      </ul>
+
+      <button class="menu-toggle" id="menu-open-btn" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close-btn" aria-label="Close navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li><a href="programmes.html" class="mobile-nav-link">Programmes Hub</a></li>
+      <li><a href="impact.html" class="mobile-nav-link">Impact Report</a></li>
+      <li><a href="partner.html" class="mobile-nav-link">Partner With Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-eyebrow">A Strategic Outreach of Men of Issachar Vision Inc.</span>
+        <h1 class="hero-title">Influencing strategic sectors, <br><span>for national transformation.</span></h1>
+        <p class="hero-description">We convene the leaders who shape academia, security, business, and governance — bringing leadership development, capacity building, and practical support to the tables where a nation's decisions are made.</p>
+        <div class="hero-ctas">
+          <a href="programmes.html" class="btn btn-primary">Explore Our Programmes</a>
+          <a href="partner.html" class="btn btn-secondary">Become a Partner</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-img-container">
+          <img src="images/giving-graphic.jpeg" alt="Empowering communities for national transformation" class="hero-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-number">17</div>
+        <div class="trust-label">Security Agencies Engaged</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">1,000+</div>
+        <div class="trust-label">Academic Leaders Reached</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">1,500+</div>
+        <div class="trust-label">Business Audience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number">22</div>
+        <div class="trust-label">Institutions Mapped</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser / Story Section -->
+  <section class="teaser-section">
+    <div class="container teaser-grid">
+      <div class="teaser-media">
+        <img src="images/rev-samson.jpg" alt="Rev. Samson Ajetomobi preaching" class="teaser-img">
+      </div>
+      <div class="teaser-content" style="text-align: left;">
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title">A decades-old vision, carried into the rooms where society decides.</h2>
+        <div class="divider"></div>
+        <div class="teaser-text">
+          <p>For over three decades, Men of Issachar Vision Inc. has raised leaders across Nigeria and beyond. MIV Strategic Initiative is its dedicated expression for reaching the specific sectors that shape national life — academia, security, business, and traditional governance.</p>
+          <p>We don't wait for institutions to come to us. We go to where their leaders already meet, bringing real value first: leadership insight, funding access, dialogue, and welfare support.</p>
+        </div>
+        <a href="about.html" class="btn btn-secondary">Read Our Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compass / Convergence Section -->
+  <section class="compass-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-eyebrow">Our Strategic Pillars</span>
+        <h2 class="section-title">Four sectors. One conviction.</h2>
+        <div class="divider"></div>
+        <p style="opacity: 0.8;">Institutions endure only as far as the character of those who lead them. We concentrate our focus where influence compounds.</p>
+      </div>
+
+      <div class="compass-grid">
+        <!-- Interactive Compass Graphic -->
+        <div class="compass-graphic-container">
+          <div class="compass-svg-wrapper">
+            <svg viewBox="0 0 400 400" id="compass-svg" aria-label="Interactive sectors diagram showing Academia, Security, Business, and Traditional Leadership converging to the center core">
+              <!-- Radial Lines -->
+              <line x1="200" y1="40" x2="200" y2="360" stroke="#E2DCD0" stroke-width="1" stroke-dasharray="4 4" />
+              <line x1="40" y1="200" x2="360" y2="200" stroke="#E2DCD0" stroke-width="1" stroke-dasharray="4 4" />
+              <circle cx="200" cy="200" r="160" fill="none" stroke="#E2DCD0" stroke-width="1" />
+              <circle cx="200" cy="200" r="120" fill="none" stroke="#E2DCD0" stroke-width="1" />
+
+              <!-- Wedges -->
+              <!-- North: Academic -->
+              <path d="M 200,60 L 250,150 A 60,60 0 0,1 150,150 Z" class="compass-wedge wedge-academic active" data-sector="academic" />
+              <text x="200" y="110" text-anchor="middle" class="compass-label-text label-academic" data-sector="academic">Academia</text>
+
+              <!-- East: Business -->
+              <path d="M 340,200 L 250,250 A 60,60 0 0,0 250,150 Z" class="compass-wedge wedge-business" data-sector="business" />
+              <text x="290" y="203" text-anchor="middle" class="compass-label-text label-business" data-sector="business">Business</text>
+
+              <!-- South: Security -->
+              <path d="M 200,340 L 150,250 A 60,60 0 0,1 250,250 Z" class="compass-wedge wedge-security" data-sector="security" />
+              <text x="200" y="300" text-anchor="middle" class="compass-label-text label-security" data-sector="security">Security</text>
+
+              <!-- West: Royal -->
+              <path d="M 60,200 L 150,150 A 60,60 0 0,0 150,250 Z" class="compass-wedge wedge-royal" data-sector="royal" />
+              <text x="110" y="203" text-anchor="middle" class="compass-label-text label-royal" data-sector="royal">Royal</text>
+
+              <!-- Core Center -->
+              <circle cx="200" cy="200" r="40" class="compass-core" />
+              <circle cx="200" cy="200" r="32" fill="none" stroke="rgba(247, 243, 234, 0.25)" stroke-width="0.8" />
+              <text x="200" y="197" text-anchor="middle" fill="#ffffff" font-family="var(--font-title)" font-size="11px" font-weight="700" letter-spacing="0.05em">MIV</text>
+              <text x="200" y="209" text-anchor="middle" fill="#B8860B" font-family="var(--font-mono)" font-size="6px" font-weight="600" letter-spacing="0.08em">CONVENER</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Convergence Info Box -->
+        <div class="compass-card-container">
+          <div class="compass-card" id="sector-card">
+            <div class="compass-card-header">
+              <div class="compass-card-icon" id="sector-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <div>
+                <span class="compass-card-tag" id="sector-tag">Lecturers & Institutional Leaders</span>
+                <h3 class="compass-card-title" id="sector-title">Academic Transformation</h3>
+              </div>
+            </div>
+            <p class="compass-card-body" id="sector-description">Equipping lecturers and administrators across tertiary institutions to restore moral gatekeeping and build long-term educational legacy.</p>
+            <a href="academic-summit.html" class="compass-card-cta" id="sector-link">Explore Programme Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flagship Programmes Deck -->
+  <section class="programmes-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-eyebrow">Major Programmes</span>
+        <h2 class="section-title">Where vision becomes a gathering.</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Programme 1 -->
+        <div class="card">
+          <div class="card-media">
+            <img src="images/royalfather.png" alt="Royal Fathers' Conference" class="card-img">
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Traditional & Royal Leadership</span>
+            <h3 class="card-title">Royal Fathers' (Oba's) Conference</h3>
+            <p class="card-text">Traditional rulers set aside title and regalia to worship, and pray for wisdom to lead their people with integrity, peace, and compassion.</p>
+            <a href="royal-fathers-conference.html" class="card-link">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Programme 2 -->
+        <div class="card">
+          <div class="card-media">
+            <img src="images/armedforce.png" alt="Armed Forces and Security Agencies Outreach" class="card-img">
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Security & Uniformed Officers</span>
+            <h3 class="card-title">Armed Forces & Uniformed Officers Outreach</h3>
+            <p class="card-text">Honouring and strengthening officers across security agencies, and providing practical vocational empowerment for widows of fallen heroes.</p>
+            <a href="armed-forces-outreach.html" class="card-link">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Programme 3 -->
+        <div class="card">
+          <div class="card-media">
+            <img src="images/academicsummit.png" alt="Academic Summit" class="card-img">
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Academic Transformation</span>
+            <h3 class="card-title">Academic Summit & Banquet</h3>
+            <p class="card-text">Equipping lecturers and administrators across tertiary institutions to restore moral gatekeeping and build long-term educational legacy.</p>
+            <a href="academic-summit.html" class="card-link">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Programme 4 -->
+        <div class="card">
+          <div class="card-media">
+            <img src="images/business-hero.jpg" alt="MIV Business Summit" class="card-img">
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Business & Economic Development</span>
+            <h3 class="card-title">MIV Business Summit</h3>
+            <p class="card-text">Equipping values-driven entrepreneurs with mentorship, networks, and seed funding access to generate national productivity.</p>
+            <a href="business-summit.html" class="card-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Snapshot Section -->
+  <section class="impact-section">
+    <div class="container impact-grid">
+      <div class="impact-content" style="text-align: left;">
+        <span class="section-eyebrow">Impact, As Verified</span>
+        <h2 class="section-title">Reported plainly. <br><span style="color: var(--gold); font-style: italic; font-weight: 400;">No figure rounded up for effect.</span></h2>
+        <div class="divider"></div>
+        <p style="font-size: 1.05rem; opacity: 0.85; margin-bottom: 2rem;">From 9 to 17 security agencies represented in a single cycle. Over 1,000 academic leaders reached in one maiden summit. A growing network of Christian entrepreneurs equipped with real funding access. We hold our reporting processes accountable to transparency.</p>
+        <a href="impact.html" class="btn btn-primary">See Full Impact Report</a>
+      </div>
+      <div class="impact-indicators">
+        <!-- Item 1 -->
+        <div class="indicator-item">
+          <div class="indicator-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="indicator-text">
+            <span class="indicator-tag">Security Agencies</span>
+            <span class="indicator-title">Grown 9 to 17 represented agencies in one cycle</span>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="indicator-item">
+          <div class="indicator-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="indicator-text">
+            <span class="indicator-tag">Academic Engagement</span>
+            <span class="indicator-title">22 tertiary and specialised institutions mapped</span>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="indicator-item">
+          <div class="indicator-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="indicator-text">
+            <span class="indicator-tag">Business Seed Funding</span>
+            <span class="indicator-title">₦1,000,000 pitch competition prize active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-grid-overlay"></div>
+    <div class="container cta-banner-content">
+      <h2 class="cta-banner-title">National transformation is not one institution's work.</h2>
+      <p class="cta-banner-text">It requires universities willing to open their halls, agencies willing to open their gates, businesses willing to open their networks, and partners willing to open their hands.</p>
+      <a href="partner.html" class="btn btn-primary" style="background-color: var(--gold); border-color: var(--gold);">Become a Strategic Partner</a>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <!-- Brand Col -->
+      <div class="footer-brand">
+        <a href="index.html">
+          <img src="images/miv-strategic-logo.png" alt="MIV Logo" class="footer-logo-img">
+        </a>
+        <p class="footer-brand-text">We go where the decisions are made—academia, security, business, and traditional governance—equipping leaders with character, capacity, and integrity for national transformation.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@mivstrategicinitiative" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About MSI</a></li>
+          <li><a href="programmes.html" class="footer-link">Programmes</a></li>
+          <li><a href="impact.html" class="footer-link">Impact Report</a></li>
+          <li><a href="partner.html" class="footer-link">Partner / Get Involved</a></li>
+        </ul>
+      </div>
+
+      <!-- Programmes -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Programmes</h4>
+        <ul class="footer-links">
+          <li><a href="academic-summit.html" class="footer-link">Academic Summit</a></li>
+          <li><a href="business-summit.html" class="footer-link">Business Summit</a></li>
+          <li><a href="armed-forces-outreach.html" class="footer-link">Armed Forces Outreach</a></li>
+          <li><a href="royal-fathers-conference.html" class="footer-link">Royal Fathers' Conference</a></li>
+        </ul>
+      </div>
+
+      <!-- Coordinates -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-coordinates">
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Leadership & Mission Centre, Olororo Junction, Ojoo, Ibadan, Nigeria</span>
+          </li>
+          <li class="footer-coordinate-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:info@mivstrategicinitiative.com.ng" style="color: inherit;">info@mivstrategicinitiative.com.ng</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright Strip -->
+    <div class="container footer-bottom">
+      <p>&copy; 2026 MIV Strategic Initiative. All rights reserved.</p>
+      <p>A strategic outreach arm of Men of Issachar Vision Inc.</p>
+    </div>
+  </footer>
+
+  <!-- Core Javascript -->
+  <script>
+    // 1. Mobile Menu Functionality
+    const menuOpenBtn = document.getElementById('menu-open-btn');
+    const menuCloseBtn = document.getElementById('menu-close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Disable scroll
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = ''; // Restore scroll
+    }
+
+    menuOpenBtn.addEventListener('click', openMobileMenu);
+    menuCloseBtn.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+
+    // 2. Interactive SVG Compass Data & Events
+    const sectors = {
+      academic: {
+        title: "Academic Transformation",
+        tag: "Lecturers & Institutional Leaders",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+               </svg>`,
+        description: "Equipping lecturers and administrators across tertiary institutions to restore moral gatekeeping and build long-term educational legacy.",
+        link: "academic-summit.html"
+      },
+      business: {
+        title: "Business & Economic Development",
+        tag: "Entrepreneurs & Business Leaders",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+               </svg>`,
+        description: "Equipping values-driven entrepreneurs with mentorship, networks, and a ₦1,000,000 Pitch Competition to generate national productivity.",
+        link: "business-summit.html"
+      },
+      security: {
+        title: "Security & Uniformed Officers",
+        tag: "Armed Forces & Security Agencies",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+               </svg>`,
+        description: "Honouring and strengthening officers across security agencies, and providing practical vocational empowerment for widows of fallen heroes.",
+        link: "armed-forces-outreach.html"
+      },
+      royal: {
+        title: "Traditional & Royal Leadership",
+        tag: "Traditional Rulers & Royal Fathers",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+               </svg>`,
+        description: "Convening traditional rulers in humility and worship to seek divine wisdom for community peace and grassroots transformation.",
+        link: "royal-fathers-conference.html"
+      }
+    };
+
+    const wedges = document.querySelectorAll('.compass-wedge');
+    const labelTexts = document.querySelectorAll('.compass-label-text');
+    const sectorIcon = document.getElementById('sector-icon');
+    const sectorTag = document.getElementById('sector-tag');
+    const sectorTitle = document.getElementById('sector-title');
+    const sectorDescription = document.getElementById('sector-description');
+    const sectorLink = document.getElementById('sector-link');
+
+    function selectSector(sectorId) {
+      // 1. Update Active Classes in SVG
+      wedges.forEach(w => {
+        if (w.getAttribute('data-sector') === sectorId) {
+          w.classList.add('active');
+        } else {
+          w.classList.remove('active');
+        }
+      });
+
+      // 2. Update Content Card
+      const data = sectors[sectorId];
+      if (data) {
+        // Apply smooth transition effect
+        const card = document.getElementById('sector-card');
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(10px)';
+
+        setTimeout(() => {
+          sectorIcon.innerHTML = data.icon;
+          sectorTag.textContent = data.tag;
+          sectorTitle.textContent = data.title;
+          sectorDescription.textContent = data.description;
+          sectorLink.setAttribute('href', data.link);
+          
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
+        }, 150);
+      }
+    }
+
+    wedges.forEach(wedge => {
+      wedge.addEventListener('mouseenter', () => {
+        const sectorId = wedge.getAttribute('data-sector');
+        selectSector(sectorId);
+      });
+      wedge.addEventListener('click', () => {
+        const sectorId = wedge.getAttribute('data-sector');
+        selectSector(sectorId);
+      });
+    });
+
+    labelTexts.forEach(label => {
+      label.addEventListener('mouseenter', () => {
+        const sectorId = label.getAttribute('data-sector');
+        selectSector(sectorId);
+      });
+      label.addEventListener('click', () => {
+        const sectorId = label.getAttribute('data-sector');
+        selectSector(sectorId);
+      });
+    });
+  </script>
+</body>
+</html>
